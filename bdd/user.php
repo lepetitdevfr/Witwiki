@@ -22,3 +22,25 @@ function updateUser($userJSON, $bdd){
         echo $e->getCode();
     }
 }
+
+function checkLogin($userJSON, $bdd){
+    $user = json_decode($userJSON, TRUE);
+    $sql = "SELECT id, pseudo, lastname, firstname, email, id_role FROM user WHERE password = '". $user["password"]."' AND email = '". $user["email"]."'";
+
+    try {
+        $valid = 0;
+        $reponse = $bdd->query($sql);
+        while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
+        {
+            echo json_encode($donnees);
+            $valid = 1;
+        }
+
+        if ($valid == 0) {
+            echo "404";
+        }
+
+    } catch (Exception $e) {
+        echo $e->getCode();
+    }
+}
