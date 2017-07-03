@@ -5,9 +5,9 @@ function addUser($userJSON, $bdd){
 
     try {
         $bdd->query($sql);
-        echo "200";
+        echo '{"code":"200"}';
     } catch (Exception $e) {
-        echo $e->getCode();
+        echo '{"code":"'. $e->getCode() .'"}';
     }
 }
 
@@ -17,9 +17,9 @@ function updateUser($userJSON, $bdd){
 
     try {
         $bdd->query($sql);
-        echo "200";
+        echo '{"code":"200"}';
     } catch (Exception $e) {
-        echo $e->getCode();
+        echo '{"code":"'. $e->getCode() .'"}';
     }
 }
 
@@ -37,10 +37,10 @@ function checkLogin($userJSON, $bdd){
         }
 
         if ($valid == 0) {
-            echo "404";
+            echo '{"code":"404"}';
         }
 
     } catch (Exception $e) {
-        echo $e->getCode();
+        echo '{"code":"'. $e->getCode() .'"}';
     }
 }

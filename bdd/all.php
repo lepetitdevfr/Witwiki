@@ -15,6 +15,7 @@ function getContent($value,$bdd){
         }
     } catch (Exception $e) {
         echo $e->getCode();
+        echo '{"code":"'. $e->getCode() .'"}';
     }
 }
 
@@ -24,8 +25,8 @@ function deleteContent($value,$bdd){
     $sql = "DELETE FROM " . $valueArray["table"] . " WHERE id=". $valueArray["id"];
     try {
         $bdd->query($sql);
-        echo "200";
+        echo '{"code":"200"}';
     } catch (Exception $e) {
-        echo $e->getCode();
+        echo '{"code":"'. $e->getCode() .'"}';
     }
 }
