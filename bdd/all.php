@@ -1,22 +1,7 @@
 <?php
-require("bdd.php");
 
 $object = '{"firstname": "jeremy", "lastname": "petit", "pseudo": "lepetitdev", "email": "jerem71100@gmail.com", "password": "test"}';
 $userId = '{"id":"13", "table": "user"}';
-
-
-function addUser($userJSON, $bdd){
-    $user = json_decode($userJSON, TRUE);
-
-    $sql = "INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ('" . $user["pseudo"] . "','" . $user["lastname"] . "','" . $user["firstname"] . "','" . $user["email"] . "','" . $user["password"] . "',1)";
-
-    try {
-        $bdd->query($sql);
-        echo "200";
-    } catch (Exception $e) {
-        echo $e->getCode();
-    }
-}
 
 function getContent($value,$bdd){
     $valueArray = json_decode($value, TRUE);
@@ -37,7 +22,6 @@ function deleteContent($value,$bdd){
     $valueArray = json_decode($value, TRUE);
 
     $sql = "DELETE FROM " . $valueArray["table"] . " WHERE id=". $valueArray["id"];
-    echo $sql;
     try {
         $bdd->query($sql);
         echo "200";
@@ -45,8 +29,3 @@ function deleteContent($value,$bdd){
         echo $e->getCode();
     }
 }
-
-// deleteContent($userId,$bdd);
-// addUser($object, $bdd);
-
-?>

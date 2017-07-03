@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2017 at 11:54 AM
+-- Generation Time: Jul 03, 2017 at 09:09 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -33,6 +33,13 @@ CREATE TABLE `article` (
   `id_categorie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `title`, `content`, `id_categorie`) VALUES
+(1, 'gfd', 'gdf', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +51,13 @@ CREATE TABLE `categorie` (
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `name`) VALUES
+(1, 'gfdgfdg');
+
 -- --------------------------------------------------------
 
 --
@@ -53,9 +67,16 @@ CREATE TABLE `categorie` (
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `content` int(11) NOT NULL,
+  `content` varchar(5000) NOT NULL,
   `id_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `date`, `content`, `id_article`) VALUES
+(1, '2017-07-11 00:00:00', 'gfd', 1);
 
 -- --------------------------------------------------------
 
@@ -67,6 +88,18 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'Administrateur'),
+(2, 'Auteur'),
+(3, 'Abonné'),
+(4, 'tst'),
+(5, 'tst'),
+(6, 'cxw');
 
 -- --------------------------------------------------------
 
@@ -80,9 +113,16 @@ CREATE TABLE `user` (
   `lastname` varchar(100) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` int(11) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `id_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `pseudo`, `lastname`, `firstname`, `email`, `password`, `id_role`) VALUES
+(15, 'lepetitdev', 'petit', 'jeremy', 'jerem71100@gmail.com', 'test', 3);
 
 --
 -- Indexes for dumped tables
@@ -119,6 +159,8 @@ ALTER TABLE `role`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pseudo` (`pseudo`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `id_role` (`id_role`);
 
 --
@@ -129,27 +171,27 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- Constraints for dumped tables
 --
