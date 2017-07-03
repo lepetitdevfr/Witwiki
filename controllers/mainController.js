@@ -1,11 +1,17 @@
-angular.module("app").controller("mainController", function ($scope, clientsFactory)
+angular.module("app").controller("mainController", function ($scope, usersFactory)
 {
-    $scope.clients = clientsFactory.getClients();
-    
-    $scope.addClient = function(client)
-    {
-        clientsFactory.addClient(client);
-        $scope.newClient.nom='';
-        $scope.newClient.prenom='';
-    }
+	$scope.users = usersFactory.getUsers();
+
+	$scope.createUser = function(user)
+	{
+		if ($scope.newUser.password1 === $scope.newUser.password2) {		
+			usersFactory.createUser(user);
+			$scope.newUser.pseudo='';
+			$scope.newUser.nom='';
+			$scope.newUser.prenom='';
+			$scope.newUser.email='';
+			$scope.newUser.password1='';
+			$scope.newUser.password2='';
+		}
+	}
 });

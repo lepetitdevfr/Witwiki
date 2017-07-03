@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Comprendre Angularjs</title>
-        <script src="libs/angular.min.js"></script>
-        <script src="app.js"></script>
-        <script src="services/clientsFactory.js"></script>
-        <script src="controllers/mainController.js"></script>
-        <script src="directives/client.js"></script>
-    </head>
-    <body>
-        <section  class="container" ng-app="app" ng-controller="mainController">
-                <form name="newClientForm" class="well form-inline pull-right col-lg-5">
-                    <legend>Ajouter un nouveau client</legend>
-                    <fieldset class="row">
-                        <label for="nom" class="col-lg-3">Nom :</label>
-                        <input id="nom" type="text" style="width:150px" class="input-sm form-control " ng-model="newClient.nom">
-                    </fieldset>
-                    <h1></h1>
-                    <fieldset class="row">
-                        <label for="prenom" class="col-lg-3">Prenom :</label>
-                        <input id="prenom" type="text" style="width:150px" class="input-sm form-control" ng-model="newClient.prenom">
-                    </fieldset>
-                    <h1></h1>
-                    <fieldset class="row">
-                        <button class="btn btn-primary" type="submit" ng-click="addClient(newClient)"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter </button>
-                        <button class="btn btn-primary" type="reset"><span class="glyphicon glyphicon-remove-sign"></span> Annuler </button>
-                    </fieldset>
-                </form>
-                <h2>Liste des Clients</h2>
-                <article ng-repeat="client in clients">
-                    <client />
-                </article>
-        </section>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Witwiki</title>
+    <script src="libs/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="services/usersFactory.js"></script>
+    <script src="controllers/mainController.js"></script>
+    <script src="directives/client.js"></script>
+</head>
+<body>
+    <section  class="container" ng-app="app" ng-controller="mainController">
+        <form name="newUserForm" class="well form-inline pull-right col-lg-5">
+            <fieldset class="row">
+                <label for="pseudo" class="col-lg-3">Pseudo :</label>
+                <input id="pseudo" type="text" style="width:150px" class="input-sm form-control " ng-model="newUser.pseudo">
+            </fieldset>
+            <fieldset class="row">
+                <label for="nom" class="col-lg-3">Nom :</label>
+                <input id="nom" type="text" style="width:150px" class="input-sm form-control" ng-model="newUser.nom">
+            </fieldset>
+            <fieldset class="row">
+                <label for="prenom" class="col-lg-3">Prenom :</label>
+                <input id="prenom" type="text" style="width:150px" class="input-sm form-control" ng-model="newUser.prenom">
+            </fieldset>
+            <fieldset class="row">
+                <label for="email" class="col-lg-3">Email :</label>
+                <input id="email" type="email" style="width:150px" class="input-sm form-control" ng-model="newUser.email">
+            </fieldset>
+            <fieldset class="row">
+                <label for="password1" class="col-lg-3">Password :</label>
+                <input id="password1" type="password" style="width:150px" class="input-sm form-control" ng-model="newUser.password1">
+            </fieldset>
+            <fieldset class="row">
+                <label for="password2" class="col-lg-3">Password :</label>
+                <input id="password2" type="password" style="width:150px" class="input-sm form-control" ng-model="newUser.password2">
+            </fieldset>
+            <fieldset class="row">
+                <button class="btn btn-primary" type="submit" ng-click="createUser(newUser)"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter </button>
+                <button class="btn btn-primary" type="reset"><span class="glyphicon glyphicon-remove-sign"></span> Annuler </button>
+            </fieldset>
+        </form>
+
+<!--         <h2>Liste des Clients</h2>
+        <article ng-repeat="user in users">
+            <client />
+        </article> -->
+    </section>
+</body>
 </html>
