@@ -73,7 +73,7 @@ app.post('/login', function (req, res, next) {
 app.post('/updateRole', function (req,res,next) {
 	console.log('updateRole');
 	var params = req.body;
-	connection.query("UPDATE user SET id_role="+params.role+" WHERE pseudo="+params.pseudo , function (error, results, fields) {
+	connection.query("UPDATE user SET id_role="+params.role+" WHERE pseudo='"+params.pseudo+"'", function (error, results, fields) {
 		try{
 			res.json({code:200});
 		}catch(e){

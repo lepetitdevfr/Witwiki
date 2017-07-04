@@ -26,8 +26,8 @@
             return $http.get('http://localhost:8080/getAllRoles').then(handleSuccess, handleError('Error getting all users'));
         }
 
-        function UpdateRole() {
-            return $http.post('http://localhost:8080/updateRole').then(handleSuccess, handleError('Error updating user role'))
+        function UpdateRole(param) {
+            return $http.post('http://localhost:8080/updateRole',param).then(handleSuccess, handleError('Error updating user role'))
         }
 
         function CreateUser(user) {
