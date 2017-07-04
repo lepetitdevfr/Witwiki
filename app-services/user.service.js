@@ -24,7 +24,11 @@
         function GetAllRoles() {
             return $http.get('http://localhost:8080/getAllRoles').then(handleSuccess, handleError('Error getting all users'));
         }
-        
+
+        function UserRole() {
+            return $http.put('http://localhost:8080/userRole').then(handleSuccess, handleError('Error updating user role'))
+        }
+
         function CreateUser(user) {
             return $http.post('http://localhost:8080/addUser',user).then(handleSuccess, handleError('Error creating user'));
         }

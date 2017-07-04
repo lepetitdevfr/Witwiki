@@ -24,7 +24,7 @@
                 if (xmlhttp.readyState == XMLHttpRequest.DONE) {
                     var resp = JSON.parse(xmlhttp.response);
                     if (resp.code === 200) {
-                        callback({success:true});
+                        callback({success:true,userData:resp.data});
                     }else{
                         callback({success:false,message:resp.message});
                     }
@@ -32,16 +32,13 @@
             }
         }
 
-        function SetCredentials(username, password) {
+        function SetCredentials(username, password,userData) {
             var authdata = Base64.encode(username + ':' + password);
 
             $rootScope.globals = {
-                currentUser: {
-                    username: username,
-                    authdata: authdata
-                }
+                currentUser: userData
             };
-
+            console.log($rootScope);
             // set default auth header for http requests
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
 
