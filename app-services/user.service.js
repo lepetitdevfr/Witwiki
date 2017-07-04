@@ -9,36 +9,22 @@
     function UserService($http) {
         var service = {};
 
-        service.GetAll = GetAll;
-        service.GetById = GetById;
-        service.GetByUsername = GetByUsername;
-        service.Create = Create;
+        service.GetAllUsers = GetAllUsers;
+        service.GetAllRoles = GetAllRoles;
         service.CreateUser = CreateUser;
         service.Update = Update;
         service.Delete = Delete;
 
         return service;
 
-        function GetAll() {
-            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
+        function GetAllUsers() {
+            return $http.get('http://localhost:8080/getAllUsers').then(handleSuccess, handleError('Error getting all users'));
         }
 
-        function GetById(id) {
-            return $http.get('/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
+        function GetAllRoles() {
+            return $http.get('http://localhost:8080/getAllRoles').then(handleSuccess, handleError('Error getting all users'));
         }
-
-        function GetByUsername(username) {
-            return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
-        }
-
-        function Create(user) {
-            return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));
-        }
-
-        // function CreateUser(user) {
-        //     return $http.post('/witwiki/bdd/main.php',{type:"addUser",content:user}).then(handleSuccess, handleError('Error creating user'));
-        // }
-
+        
         function CreateUser(user) {
             return $http.post('http://localhost:8080/addUser',user).then(handleSuccess, handleError('Error creating user'));
         }
