@@ -8,7 +8,6 @@
 
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
-        $locationProvider.hashPrefix('');
         $routeProvider
             .when('/', {
                 controller: 'HomeController',
