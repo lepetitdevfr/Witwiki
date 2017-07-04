@@ -7,7 +7,7 @@
         init();
 
         vm.updateUser = function(user) {
-            UserService.UpdateUSer(user);
+            UserService.UpdateRole(user);
         }
 
         function init() {

@@ -12,6 +12,7 @@
         service.GetAllUsers = GetAllUsers;
         service.GetAllRoles = GetAllRoles;
         service.CreateUser = CreateUser;
+        service.UpdateRole = UpdateRole;
         service.Update = Update;
         service.Delete = Delete;
 
@@ -25,8 +26,8 @@
             return $http.get('http://localhost:8080/getAllRoles').then(handleSuccess, handleError('Error getting all users'));
         }
 
-        function UserRole() {
-            return $http.put('http://localhost:8080/userRole').then(handleSuccess, handleError('Error updating user role'))
+        function UpdateRole() {
+            return $http.post('http://localhost:8080/updateRole').then(handleSuccess, handleError('Error updating user role'))
         }
 
         function CreateUser(user) {

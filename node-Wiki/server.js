@@ -7,7 +7,7 @@ var passwordHash = require('password-hash');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '',
+  password : 'root',
   database : 'witwiki'
 });
 
@@ -71,6 +71,18 @@ app.post('/login', function (req, res, next) {
 		}
 	})
 });
+
+app.post('/updateRole', function (req,res,next) {
+	var params = req.body;
+	connection.query("UPDATE user SET id_role="+params.role+" WHERE pseudo="+params.pseudo , function (error, results, fields) {
+		console.log(results);
+		try{
+			res.json({code:200});
+		}catch(e){
+			res.json({code:500,message:"Update error."})
+		}
+	})
+})
 
 // START THE SERVER
 // =============================================================================
