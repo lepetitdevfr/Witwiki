@@ -23,7 +23,6 @@ var port = process.env.PORT || 8080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 app.get('/getAllUsers',function (req,res) {
-
 	connection.query('SELECT pseudo, lastname, firstname, email, id_role FROM user', function (error, results, fields) {
 		if (error) throw error;
 		console.log(results);
@@ -32,7 +31,6 @@ app.get('/getAllUsers',function (req,res) {
 })
 
 app.get('/getAllRoles',function (req,res) {
-
 	connection.query('SELECT * FROM role', function (error, results, fields) {
 		if (error) throw error;
 		console.log(results);
@@ -58,13 +56,16 @@ app.post('/addUser', function(req, res, next) {
 app.post('/login', function (req, res, next) {
 	var params = req.body;
 	connection.query("SELECT * FROM user WHERE pseudo='"+params.pseudo+"'",function (error, results, fields) {
+		console.log(results);
 		try{
 			if (passwordHash.verify(params.password, results[0].password)) {
+					delete results[0].password;
 					res.json({code:200,data:results[0]});
 				}else{
 					res.json({code:500,message:"Identifiant ou Mot de passe incorrecte."})
 				}
 		}catch(e){
+				console.log(e);
 				res.json({code:404,message:"Identifiant inconnu."})
 
 		}
