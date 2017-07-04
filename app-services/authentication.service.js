@@ -34,11 +34,10 @@
 
         function SetCredentials(username, password,userData) {
             var authdata = Base64.encode(username + ':' + password);
-
+            userData.authdata = authdata;
             $rootScope.globals = {
                 currentUser: userData
             };
-            console.log($rootScope);
             // set default auth header for http requests
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
 
