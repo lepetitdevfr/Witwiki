@@ -20,8 +20,8 @@
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (response.success) {
-                    AuthenticationService.SetCredentials(vm.username, vm.password);
                     $location.path('/');
+                    AuthenticationService.SetCredentials(vm.username, vm.password);
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
