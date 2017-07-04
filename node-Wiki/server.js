@@ -1,4 +1,5 @@
 var express    = require('express');
+var cors 	   = require('cors')
 var app        = express();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
@@ -14,11 +15,7 @@ var connection = mysql.createConnection({
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
+app.use(cors())
 var port = process.env.PORT || 8080;        // set our port
 
 // ROUTES FOR OUR API
@@ -68,7 +65,7 @@ app.post('/login', function (req, res, next) {
 					res.json({code:500,message:"Identifiant ou Mot de passe incorrecte."})
 				}
 		}catch(e){
-				res.json({code:404,massage:"Identifiant inconnu."})
+				res.json({code:404,message:"Identifiant inconnu."})
 
 		}
 	})
