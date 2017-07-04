@@ -13,7 +13,6 @@
 
         function register() {
             vm.dataLoading = true;
-            console.log(AuthenticationService)
             UserService.CreateUser(vm.user)
             .then(function (response) {
                 console.log(response);
