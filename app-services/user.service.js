@@ -40,8 +40,12 @@
             return $http.post('/api/users', )
         }
 
+        // function CreateUser(user) {
+        //     return $http.post('/witwiki/bdd/main.php',{type:"addUser",content:user}).then(handleSuccess, handleError('Error creating user'));
+        // }
+
         function CreateUser(user) {
-            return $http.post('/witwiki/bdd/main.php',{type:"addUser",content:user}).then(handleSuccess, handleError('Error creating user'));
+            return $http.post('http://localhost:8080/addUser',user).then(handleSuccess, handleError('Error creating user'));
         }
 
         function Update(user) {

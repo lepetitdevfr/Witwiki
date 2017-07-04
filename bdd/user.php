@@ -1,6 +1,6 @@
 <?php
 function addUser($userJSON, $bdd){
-    echo 'addUser';
+    echo $userJSON;
     $user = json_decode($userJSON, TRUE);
 
     $mdp = password_hash($user["password"], PASSWORD_DEFAULT);

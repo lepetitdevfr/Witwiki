@@ -1,5 +1,5 @@
 <?php
-// header('Content-type: application/json');
+header('Content-type: application/json');
 
 require("bdd.php");
 require("all.php");
@@ -18,11 +18,12 @@ $object = '{"firstname":"jérémy","lastname":"petit","pseudo":"Lepetitdev","ema
 // 			$string = addcslashes($string, '%_');
 //             echo $string;
 //Securise les attaques externes
-if ($_SERVER['SERVER_NAME'] == "localhost") {
+// if ($_SERVER['SERVER_NAME'] == "localhost") {
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
     $type = $request->type;
     $content = $request->content;
+    echo $request;
     if (isset($type) && isset($content)) {
         switch ($type) {
             case 'login':
@@ -43,5 +44,5 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
         }
     }
 
-}
+// }
 ?>
