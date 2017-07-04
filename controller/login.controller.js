@@ -17,6 +17,8 @@
         })();
 
         function login() {
+            console.log("fds");
+            
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (response.success) {

@@ -16,7 +16,8 @@
         return service;
 
         function Login(username, password, callback) {
-            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+            console.log("fds");
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
             xmlhttp.open("POST", "http://localhost:8080/login");
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             xmlhttp.send(JSON.stringify({pseudo:username, password:password}));

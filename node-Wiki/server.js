@@ -1,12 +1,12 @@
-var express    = require('express');     
-var app        = express();               
+var express    = require('express');
+var app        = express();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
 var passwordHash = require('password-hash');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'root',
+  password : '',
   database : 'witwiki'
 });
 
@@ -42,7 +42,7 @@ app.post('/addUser', function(req, res, next) {
 
 	connection.query('INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ("'+params.pseudo+'","'+params.lastname+'","'+params.firstname+'","'+params.email+'","'+pswd+'","3")', function (error, results, fields) {
 		if (error) {
-			console.log(error.code); 
+			console.log(error.code);
 			console.log(error.fatal);
 			res.json(error.code)
 		}else{
@@ -55,7 +55,7 @@ app.post('/login', function (req, res, next) {
 	var params = req.body;
 	connection.query("SELECT * FROM user WHERE pseudo='"+params.pseudo+"'",function (error, results, fields) {
 		if (error) {
-			console.log(error.code); 
+			console.log(error.code);
 			res.json(error.code)
 		}else{
 			console.log(results);
