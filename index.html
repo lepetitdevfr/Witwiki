@@ -1,51 +1,38 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html ng-app="app">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Witwiki</title>
-    <script src="libs/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="services/usersFactory.js"></script>
-    <script src="controllers/mainController.js"></script>
-    <script src="directives/client.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link href="app-content/app.css" rel="stylesheet" />
 </head>
 <body>
-    <section  class="container" ng-app="app" ng-controller="mainController">
-        <form name="newUserForm" class="well form-inline pull-right col-lg-5">
-            <fieldset class="row">
-                <label for="pseudo" class="col-lg-3">Pseudo :</label>
-                <input id="pseudo" type="text" style="width:150px" class="input-sm form-control " ng-model="newUser.pseudo">
-            </fieldset>
-            <fieldset class="row">
-                <label for="nom" class="col-lg-3">Nom :</label>
-                <input id="nom" type="text" style="width:150px" class="input-sm form-control" ng-model="newUser.nom">
-            </fieldset>
-            <fieldset class="row">
-                <label for="prenom" class="col-lg-3">Prenom :</label>
-                <input id="prenom" type="text" style="width:150px" class="input-sm form-control" ng-model="newUser.prenom">
-            </fieldset>
-            <fieldset class="row">
-                <label for="email" class="col-lg-3">Email :</label>
-                <input id="email" type="email" style="width:150px" class="input-sm form-control" ng-model="newUser.email">
-            </fieldset>
-            <fieldset class="row">
-                <label for="password1" class="col-lg-3">Password :</label>
-                <input id="password1" type="password" style="width:150px" class="input-sm form-control" ng-model="newUser.password1">
-            </fieldset>
-            <fieldset class="row">
-                <label for="password2" class="col-lg-3">Password :</label>
-                <input id="password2" type="password" style="width:150px" class="input-sm form-control" ng-model="newUser.password2">
-            </fieldset>
-            <fieldset class="row">
-                <button class="btn btn-primary" type="submit" ng-click="createUser(newUser)"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter </button>
-                <button class="btn btn-primary" type="reset"><span class="glyphicon glyphicon-remove-sign"></span> Annuler </button>
-            </fieldset>
-        </form>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
 
-<!--         <h2>Liste des Clients</h2>
-        <article ng-repeat="user in users">
-            <client />
-        </article> -->
-    </section>
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular-route.min.js"></script>
+    <script src="//code.angularjs.org/1.6.0/angular-cookies.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="app-services/authentication.service.js"></script>
+    <script src="app-services/flash.service.js"></script>
+
+    <!-- Real user service that uses an api -->
+    <script src="app-services/user.service.js"></script>
+
+    <!-- Fake user service for demo that uses local storage -->
+    <!-- <script src="app-services/user.service.local-storage.js"></script> -->
+
+    <script src="home/home.controller.js"></script>
+    <script src="login/login.controller.js"></script>
+    <script src="register/register.controller.js"></script>
 </body>
 </html>
