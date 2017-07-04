@@ -41,7 +41,7 @@
         }
 
         function CreateUser(user) {
-            return $http.get('/witwiki/bdd/main.php?type=addUser&content='+JSON.stringify(user)).then(handleSuccess, handleError('Error creating user'));
+            return $http.post('/witwiki/bdd/main.php',{type:"addUser",content:user}).then(handleSuccess, handleError('Error creating user'));
         }
 
         function Update(user) {

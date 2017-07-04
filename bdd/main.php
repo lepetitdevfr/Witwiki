@@ -19,11 +19,11 @@ $object = '{"firstname":"jérémy","lastname":"petit","pseudo":"Lepetitdev","ema
 //             echo $string;
 //Securise les attaques externes
 if ($_SERVER['SERVER_NAME'] == "localhost") {
-    if (isset($_POST["type"]) && isset($_POST["content"])) {
-
-        $content = $_POST["content"];
-        $type = $_POST["type"];
-        
+    $postdata = file_get_contents("php://input");
+    $request = json_decode($postdata);
+    $type = $request->type;
+    $content = $request->content;
+    if (isset($type) && isset($content)) {
         switch ($type) {
             case 'login':
             checkLogin($content, $bdd);
@@ -38,7 +38,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
             deleteContent($content,$bdd);
             break;
             default:
-            # code...
+            echo "default case";
             break;
         }
     }
