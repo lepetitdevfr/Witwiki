@@ -5,8 +5,8 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', 'AuthenticationService', 'FlashService'];
-    function LoginController($location, AuthenticationService, FlashService) {
+    LoginController.$inject = ["$scope",'$location', 'AuthenticationService', 'FlashService'];
+    function LoginController($scope,$location, AuthenticationService, FlashService) {
         var vm = this;
 
         vm.login = login;
@@ -17,8 +17,6 @@
         })();
 
         function login() {
-            console.log("fds");
-            
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (response.success) {
@@ -28,6 +26,8 @@
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
                 }
+                $scope.$apply();
+
             });
         };
     }
