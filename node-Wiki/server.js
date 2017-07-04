@@ -44,9 +44,7 @@ app.post('/addUser', function(req, res, next) {
 	var pswd = passwordHash.generate(params.password);
 	connection.query('INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ("'+params.pseudo+'","'+params.lastname+'","'+params.firstname+'","'+params.email+'","'+pswd+'","3")', function (error, results, fields) {
 		if (error) {
-			console.log(error.code);
-			console.log(error.fatal);
-			res.json(error.code)
+			res.json(error)
 		}else{
 			res.json(results);
 		}

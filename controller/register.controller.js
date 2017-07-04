@@ -17,7 +17,7 @@
             .then(function (response) {
                 console.log(response);
                 if (response.success) {
-                    if (response.data.code == "23000") {
+                    if (response.data.sqlState == "23000") {
                         FlashService.Error("Pseudo ou Email déjà utilisé");
                         vm.dataLoading = false;
                     }else{
