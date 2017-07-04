@@ -1,7 +1,9 @@
 <?php
 function addUser($userJSON, $bdd){
     $user = json_decode($userJSON, TRUE);
-    $sql = "INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ('" . $user["pseudo"] . "','" . $user["lastname"] . "','" . $user["firstname"] . "','" . $user["email"] . "','" . $user["password"] . "',3)";
+
+    $mdp = password_hash($user["password"], PASSWORD_DEFAULT);
+    $sql = "INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ('" . $user["pseudo"] . "','" . $user["lastname"] . "','" . $user["firstname"] . "','" . $user["email"] . "','" . $mdp . "',3)";
 
     try {
         $bdd->query($sql);
@@ -13,7 +15,8 @@ function addUser($userJSON, $bdd){
 
 function updateUser($userJSON, $bdd){
     $user = json_decode($userJSON, TRUE);
-    $sql = "UPDATE user SET pseudo = '" . $user["pseudo"] . "', lastname = '" . $user["lastname"] . "', firstname = '" . $user["firstname"] . "', email = '" . $user["email"] . "', password = '" . $user["password"] . "', id_role = " . $user["id_role"] . " WHERE id = ". $user["id"];
+    $mdp = password_hash($user["password"], PASSWORD_DEFAULT);
+    $sql = "UPDATE user SET pseudo = '" . $user["pseudo"] . "', lastname = '" . $user["lastname"] . "', firstname = '" . $user["firstname"] . "', email = '" . $user["email"] . "', password = '" . $mdp . "', id_role = " . $user["id_role"] . " WHERE id = ". $user["id"];
 
     try {
         $bdd->query($sql);
@@ -25,7 +28,8 @@ function updateUser($userJSON, $bdd){
 
 function checkLogin($userJSON, $bdd){
     $user = json_decode($userJSON, TRUE);
-    $sql = "SELECT id, pseudo, lastname, firstname, email, id_role FROM user WHERE password = '". $user["password"]."' AND email = '". $user["email"]."'";
+    $mdp = password_hash($user["password"], PASSWORD_DEFAULT);
+    $sql = "SELECT id, pseudo, lastname, firstname, email, id_role FROM user WHERE password = '". $mdp ."' AND email = '". $user["email"]."'";
 
     try {
         $valid = 0;

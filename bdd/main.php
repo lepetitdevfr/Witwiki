@@ -1,5 +1,5 @@
 <?php
-header('Content-type: application/json');
+// header('Content-type: application/json');
 
 require("bdd.php");
 require("all.php");
@@ -14,13 +14,16 @@ $object = '{"firstname":"jérémy","lastname":"petit","pseudo":"Lepetitdev","ema
 // getContent($userId,$bdd);
 // addUser($object, $bdd);
 // updateUser($object, $bdd);
-
+// $string = mysql_real_escape_string($object);
+// 			$string = addcslashes($string, '%_');
+//             echo $string;
 //Securise les attaques externes
 if ($_SERVER['SERVER_NAME'] == "localhost") {
     if (isset($_POST["type"]) && isset($_POST["content"])) {
+
         $content = $_POST["content"];
         $type = $_POST["type"];
-
+        
         switch ($type) {
             case 'login':
             checkLogin($content, $bdd);
