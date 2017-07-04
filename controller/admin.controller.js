@@ -6,12 +6,12 @@
         var vm = this;
         init();
 
-        vm.updateUser = function(user) {
-            UserService.UpdateRole(user);
+        vm.updateRoleUser = function(user) {
+            var newRoleUSer = '{pseudo:"' + user.pseudo + '", role:' + user.id_role + '}';
+            UserService.UpdateRole(newRoleUSer);
         }
 
         function init() {
-            console.log($rootScope.globals.currentUser);
             loadAllUsers();
             loadAllRoles();
         }

@@ -16,10 +16,10 @@
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
         <td>
-            <select class="" name="">
-                <option ng-repeat="role in vm.allRoles" value="{{role.id}}" ng-selected="role.id == user.id_role">{{role.name}}</option>
+            <select ng-options="role.id as role.name for role in vm.allRoles" ng-model="user.id_role" class="" name="">
+                <!-- <option ng-repeat="role in vm.allRoles" value="{{role.id}}" ng-selected="role.id == user.id_role">{{role.name}}</option> -->
             </select>
         </td>
-        <td><button type="button" ng-click="updateUser(user)" name="button">Valider</button></td>
+        <td><button type="button" ng-click="vm.updateRoleUser(user)" name="button">Valider</button></td>
     </tr>
 </table>
