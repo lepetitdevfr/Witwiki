@@ -11,10 +11,10 @@
     </tr>
 
     <tr ng-repeat="user in vm.allUsers">
-        <td>{{user.pseudo}}></td>
-        <td>{{user.email}}></td>
-        <td>{{user.firstname}}></td>
-        <td>{{user.lastname}}></td>
+        <td>{{user.pseudo}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
         <td>
             <select class="" name="">
                 <option ng-repeat="role in vm.allRoles" value="{{role.id}}" ng-selected="role.id == user.id_role">{{role.name}}</option>

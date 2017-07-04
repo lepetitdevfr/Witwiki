@@ -4,34 +4,29 @@
     AdminController.$inject = ['UserService', '$rootScope'];
     function AdminController(UserService, $rootScope) {
         var vm = this;
-
         init();
 
         vm.updateUser = function(user) {
-            console.log(user);
             UserService.UpdateUSer(user);
         }
 
         function init() {
+            console.log($rootScope.globals.currentUser);
             loadAllUsers();
             loadAllRoles();
         }
 
-        vm.addUser = function(user) {
-            UserService.AddUser(user);
-        }
-
         function loadAllUsers() {
             UserService.GetAllUsers()
-            .then(function (users) {
-                vm.allUsers = users;
+            .then(function (content) {
+                vm.allUsers = content.data;
             });
         }
 
         function loadAllRoles() {
             UserService.GetAllRoles()
-            .then(function (roles) {
-                vm.allRoles = roles;
+            .then(function (content) {
+                vm.allRoles = content.data;
             });
         }
     }

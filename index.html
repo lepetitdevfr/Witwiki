@@ -13,7 +13,7 @@
                 <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
                 <ul>
                     <li><a ng-href="./">Accueil</a></li>
-                    <li><a ng-href="#!/admin">Administration</a></li>
+                    <li ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
                     <li><a ng-href="#!/login">Déconnexion</a></li>
                 </ul>
                 <div ng-view></div>
