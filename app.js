@@ -27,6 +27,12 @@
                 controllerAs: 'vm'
             })
 
+            // .when('/admin', {
+            //     controller: 'AdminController',
+            //     templateUrl: 'admin/admin.view.html',
+            //     controllerAs: 'vm'
+            // })
+
             .otherwise({ redirectTo: '/login' });
     }
 
