@@ -1,0 +1,39 @@
+<h1>Administration</h1>
+
+<h2>Ajouter un utilisateur</h2>
+<form class="" action="index.html" method="post">
+    <input type="text" name="" ng-model="pseudo">
+    <input type="text" name="" ng-model="email">
+    <input type="text" name="" ng-model="firstname">
+    <input type="text" name="" ng-model="lastname">
+    <select class="" ng-model="id_role" name="">
+        <option ng-repeat="role in vm.allRoles" value="{{role.id}}">{{role.name}}</option>
+    </select>
+
+    <button type="button" ng-click="addUser()" name="button">Ajouter</button>
+</form>
+<table style="width:100%">
+    <tr>
+        <th>Pseudo</th>
+        <th>Email</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Role</th>
+        <th>Valider</th>
+    </tr>
+
+    <tr ng-repeat="user in vm.allUsers">
+        <td><input type="text" name="" value="{{user.pseudo}}"></td>
+        <td><input type="text" name="" value="{{user.email}}"></td>
+        <td><input type="text" name="" value="{{user.firstname}}"></td>
+        <td><input type="text" name="" value="{{user.lastname}}"></td>
+        <td>
+            <select class="" name="">
+                <option ng-repeat="role in vm.allRoles" value="{{role.id}}" ng-selected="role.id == user.id_role">{{role.name}}</option>
+            </select>
+        </td>
+        <td><button type="button" ng-click="updateUser(user)" name="button">Valider</button></td>
+    </tr>
+</table>
+
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
