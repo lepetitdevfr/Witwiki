@@ -13,7 +13,6 @@
         service.GetById = GetById;
         service.GetByUsername = GetByUsername;
         service.Create = Create;
-        service.Login = Login;
         service.CreateUser = CreateUser;
         service.Update = Update;
         service.Delete = Delete;
@@ -34,10 +33,6 @@
 
         function Create(user) {
             return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));
-        }
-
-        function Login(pseudo,password){
-            return $http.post('/api/users', )
         }
 
         // function CreateUser(user) {
