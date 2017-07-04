@@ -22,8 +22,11 @@
             xmlhttp.send(JSON.stringify({pseudo:username, password:password}));
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                    if (xmlhttp.status === 200) {
+                    var resp = JSON.parse(xmlhttp.response);
+                    if (resp.code === 200) {
                         callback({success:true});
+                    }else{
+                        callback({success:false,message:resp.message});
                     }
                 }
             }
