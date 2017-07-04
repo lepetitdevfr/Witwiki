@@ -27,11 +27,11 @@
                 controllerAs: 'vm'
             })
 
-            // .when('/admin', {
-            //     controller: 'AdminController',
-            //     templateUrl: 'controller/admin.view.html',
-            //     controllerAs: 'vm'
-            // })
+            .when('/admin', {
+                controller: 'AdminController',
+                templateUrl: 'view/admin.view.html',
+                controllerAs: 'vm'
+            })
 
             .otherwise({ redirectTo: '/login' });
     }
