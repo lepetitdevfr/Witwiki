@@ -14,7 +14,7 @@
         }
 
         vm.addUser = function(user) {
-            UserService.UpdateUSer(user);
+            UserService.AddUser(user);
         }
 
         function loadAllUsers() {
