@@ -15,27 +15,30 @@ $object = '{"firstname":"jérémy","lastname":"petit","pseudo":"Lepetitdev","ema
 // addUser($object, $bdd);
 // updateUser($object, $bdd);
 
-if (isset($_GET["type"]) && isset($_GET["content"])) {
+//Securise les attaques externes
+if ($_SERVER['SERVER_NAME'] == "localhost") {
+    if (isset($_POST["type"]) && isset($_POST["content"])) {
+        $content = $_POST["content"];
+        $type = $_POST["type"];
 
-    $content = $_GET["content"];
-    $type = $_GET["type"];
-
-    switch ($type) {
-        case 'login':
+        switch ($type) {
+            case 'login':
             checkLogin($content, $bdd);
             break;
-        case 'addUser':
+            case 'addUser':
             addUser($content, $bdd);
             break;
-        case 'get':
+            case 'get':
             getContent($content,$bdd);
             break;
-        case 'delete':
+            case 'delete':
             deleteContent($content,$bdd);
             break;
-        default:
+            default:
             # code...
             break;
+        }
     }
+
 }
 ?>

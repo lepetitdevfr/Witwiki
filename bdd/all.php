@@ -8,11 +8,18 @@ function getContent($value,$bdd){
 
     $sql = "SELECT * FROM " . $valueArray["table"] . " WHERE id=". $valueArray["id"];
     try {
+        $valid = 0;
         $reponse = $bdd->query($sql);
         while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
         {
+            $valid = 1;
             echo json_encode($donnees);
         }
+
+        if ($valid == 0) {
+            echo '{"code":"404"}';
+        }
+
     } catch (Exception $e) {
         echo $e->getCode();
         echo '{"code":"'. $e->getCode() .'"}';

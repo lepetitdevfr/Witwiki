@@ -1,7 +1,7 @@
 <?php
 function addUser($userJSON, $bdd){
     $user = json_decode($userJSON, TRUE);
-    $sql = "INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ('" . $user["pseudo"] . "','" . $user["lastname"] . "','" . $user["firstname"] . "','" . $user["email"] . "','" . $user["password"] . "',1)";
+    $sql = "INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ('" . $user["pseudo"] . "','" . $user["lastname"] . "','" . $user["firstname"] . "','" . $user["email"] . "','" . $user["password"] . "',3)";
 
     try {
         $bdd->query($sql);
