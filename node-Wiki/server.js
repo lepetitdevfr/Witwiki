@@ -22,36 +22,10 @@ var port = process.env.PORT || 8080;        // set our port
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
 
-app.get('/getAllUsers',function (req,res) {
-	console.log("getAllUsers");
-	connection.query('SELECT pseudo, lastname, firstname, email, id_role FROM user', function (error, results, fields) {
-		if (error) throw error;
-		res.json(results);
-	});
-})
 
-app.get('/getAllRoles',function (req,res) {
-	console.log("getAllRoles");
-	connection.query('SELECT * FROM role', function (error, results, fields) {
-		if (error) throw error;
-		res.json(results);
-	});
-})
-
-app.post('/addUser', function(req, res, next) {
-	console.log("addUser");
-	var params = req.body;
-	var pswd = passwordHash.generate(params.password);
-	connection.query('INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ("'+params.pseudo+'","'+params.lastname+'","'+params.firstname+'","'+params.email+'","'+pswd+'","3")', function (error, results, fields) {
-		if (error) {
-			res.json(error)
-		}else{
-			res.json(results);
-		}
-	});
-});
-
-app.post('/login', function (req, res, next) {
+// LOGIN
+// =============================================================================
+app.post('/login', function (req, res) {
 	console.log("login");
 	var params = req.body;
 	connection.query("SELECT * FROM user WHERE pseudo='"+params.pseudo+"'",function (error, results, fields) {
@@ -70,7 +44,41 @@ app.post('/login', function (req, res, next) {
 	})
 });
 
-app.post('/updateRole', function (req,res,next) {
+// USER
+// =============================================================================
+app.get('/getAllUsers',function (req,res) {
+	console.log("getAllUsers");
+	connection.query('SELECT pseudo, lastname, firstname, email, id_role FROM user', function (error, results, fields) {
+		if (error) throw error;
+		res.json(results);
+	});
+});
+
+app.post('/addUser', function(req, res) {
+	console.log("addUser");
+	var params = req.body;
+	var pswd = passwordHash.generate(params.password);
+	connection.query('INSERT INTO user (pseudo, lastname, firstname, email, password, id_role) VALUES ("'+params.pseudo+'","'+params.lastname+'","'+params.firstname+'","'+params.email+'","'+pswd+'","3")', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+
+// ROLES
+// =============================================================================
+app.get('/getAllRoles',function (req,res) {
+	console.log("getAllRoles");
+	connection.query('SELECT * FROM role', function (error, results, fields) {
+		if (error) throw error;
+		res.json(results);
+	});
+});
+
+app.post('/updateRole', function (req,res) {
 	console.log('updateRole');
 	var params = req.body;
 	connection.query("UPDATE user SET id_role="+params.role+" WHERE pseudo='"+params.pseudo+"'", function (error, results, fields) {
@@ -80,7 +88,45 @@ app.post('/updateRole', function (req,res,next) {
 			res.json({code:500,message:"Update error."})
 		}
 	})
-})
+});
+
+// CATEGORY
+// =============================================================================
+
+app.get('/getAllCat',function (req,res) {
+	console.log("getAllCat");
+	connection.query('SELECT * FROM categorie', function (error, results, fields) {
+		if (error) throw error;
+		res.json(results);
+	});
+});
+
+app.post('/updateCat', function (req,res) {
+	console.log('updateCat');
+	var params = req.body;
+	connection.query("UPDATE categorie SET name="+params.name+" WHERE id="+params.id, function (error, results, fields) {
+		try{
+			res.json({code:200});
+		}catch(e){
+			res.json({code:500,message:"Update error."})
+		}
+	})
+});
+
+app.post('/addCat', function(req, res) {
+	console.log("addCat");
+	var params = req.body;
+	connection.query('INSERT INTO categorie (name) VALUES ("'+params.name+'")', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+
+
 
 // START THE SERVER
 // =============================================================================
