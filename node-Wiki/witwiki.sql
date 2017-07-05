@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2017 at 09:09 PM
+-- Generation Time: Jul 05, 2017 at 11:22 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -30,7 +30,7 @@ CREATE TABLE `article` (
   `id` int(11) NOT NULL,
   `title` varchar(1000) NOT NULL,
   `content` varchar(50000) NOT NULL,
-  `id_categorie` int(11) NOT NULL
+  `id_categorie` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `title`, `content`, `id_categorie`) VALUES
-(1, 'gfd', 'gdf', 1);
+(1, 'gfd', 'gdf', NULL);
 
 -- --------------------------------------------------------
 
@@ -50,13 +50,6 @@ CREATE TABLE `categorie` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `categorie`
---
-
-INSERT INTO `categorie` (`id`, `name`) VALUES
-(1, 'gfdgfdg');
 
 -- --------------------------------------------------------
 
@@ -96,10 +89,7 @@ CREATE TABLE `role` (
 INSERT INTO `role` (`id`, `name`) VALUES
 (1, 'Administrateur'),
 (2, 'Auteur'),
-(3, 'Abonné'),
-(4, 'tst'),
-(5, 'tst'),
-(6, 'cxw');
+(3, 'Abonné');
 
 -- --------------------------------------------------------
 
@@ -122,7 +112,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `pseudo`, `lastname`, `firstname`, `email`, `password`, `id_role`) VALUES
-(15, 'lepetitdev', 'petit', 'jeremy', 'jerem71100@gmail.com', 'test', 3);
+(42, 'test', 'test', 'test', 'test', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 1),
+(44, 'test1', 'test', 'test', 'test1', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 2);
 
 --
 -- Indexes for dumped tables
@@ -133,7 +124,8 @@ INSERT INTO `user` (`id`, `pseudo`, `lastname`, `firstname`, `email`, `password`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_categorie` (`id_categorie`);
+  ADD KEY `id_categorie` (`id_categorie`),
+  ADD KEY `id_categorie_2` (`id_categorie`);
 
 --
 -- Indexes for table `categorie`
@@ -186,12 +178,12 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- Constraints for dumped tables
 --
@@ -200,7 +192,7 @@ ALTER TABLE `user`
 -- Constraints for table `article`
 --
 ALTER TABLE `article`
-  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `comment`
