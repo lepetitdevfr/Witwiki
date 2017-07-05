@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 11:22 AM
+-- Generation Time: Jul 05, 2017 at 11:29 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -50,6 +50,14 @@ CREATE TABLE `categorie` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `name`) VALUES
+(3, 'fsdfdsfdsfsdfdsf'),
+(2, 'test');
 
 -- --------------------------------------------------------
 
@@ -131,7 +139,8 @@ ALTER TABLE `article`
 -- Indexes for table `categorie`
 --
 ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `comment`
@@ -168,7 +177,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `comment`
 --

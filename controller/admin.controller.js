@@ -15,6 +15,18 @@
             }
         }
 
+        vm.addCat = function() {
+            var cat = vm.newCat;
+            if (cat != "") {
+                var newCat = {name:cat};
+                CatService.CreateCat(newCat)
+                .then(function (response) {
+                    vm.newCat = "";
+                    loadAllCat();
+                });
+            }
+        }
+
         vm.updateRoleUser = function(user) {
             var newRoleUSer = {pseudo:user.pseudo, role:user.id_role};
             UserService.UpdateRole(newRoleUSer)
@@ -36,7 +48,6 @@
                 loadAllCat();
             });
         }
-
 
         function loadAllUsers() {
             UserService.GetAllUsers()
