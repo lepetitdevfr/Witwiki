@@ -1,8 +1,10 @@
 (function () {
     'use strict';
-    angular.module('app').controller('AdminController', AdminController);
-    AdminController.$inject = ['UserService', '$rootScope', '$location', 'CatService'];
-    function AdminController(UserService, $rootScope, $location, CatService) {
+    var app = angular.module('app');
+    app.controller('AdminController', AdminController);
+    app.$inject = [ 'UserService', '$rootScope', '$location', 'CatService', 'ngTable'];
+
+    function AdminController(UserService, $rootScope, $location, CatService, NgTableParams) {
         var vm = this;
 
         function init() {
@@ -10,6 +12,9 @@
                 loadAllUsers();
                 loadAllRoles();
                 loadAllCat();
+
+                var data = [{name: "Moroni", age: 50} /*,*/];
+vm.tableParams = new NgTableParams({}, { dataset: data});
             }else {
                 $location.path('/');
             }
@@ -35,10 +40,12 @@
         }
 
         vm.updateCat = function(cat) {
-            var newCat = {name:cat.name, id:cat.id};
-            CatService.UpdateCat(newCat)
-            .then(function (response) {
-            });
+            if (cat.name != "") {
+                var newCat = {name:cat.name, id:cat.id};
+                CatService.UpdateCat(newCat)
+                .then(function (response) {
+                });
+            }
         }
 
         vm.deleteCat = function(idCat) {
