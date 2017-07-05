@@ -13,6 +13,7 @@
 
         function initController() {
             console.log()
+            loadAllCat();
         }
 
         vm.addArticle = function (title,preface,content) {
@@ -20,6 +21,13 @@
             ArticleService.CreateArticle(params)
             .then(function (response) {
                 console.log(response);
+            });
+        }
+
+        function loadAllCat() {
+            CatService.GetAllCat()
+            .then(function (content) {
+                vm.allCat = content.data;
             });
         }
 
