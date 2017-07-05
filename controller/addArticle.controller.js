@@ -16,8 +16,8 @@
             loadAllCat();
         }
 
-        vm.addArticle = function (title,preface,content) {
-            var params = {title:title,preface:preface,content:content};
+        vm.addArticle = function (title,preface,content,idCat) {
+            var params = {title:title,preface:preface,content:content,idCat:idCat};
             ArticleService.CreateArticle(params)
             .then(function (response) {
                 console.log(response);
