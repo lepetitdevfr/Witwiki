@@ -29,6 +29,14 @@
             });
         }
 
+        vm.deleteCat = function(idCat) {
+            var idCat = {id:idCat};
+            CatService.DeleteCat(idCat)
+            .then(function (content) {
+                loadAllCat();
+            });
+        }
+
 
         function loadAllUsers() {
             UserService.GetAllUsers()

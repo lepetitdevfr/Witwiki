@@ -20,7 +20,6 @@
         }
         // param.name , param.id
         function UpdateCat(param) {
-            console.log(param);
             return $http.post('http://localhost:8080/updateCat',param).then(handleSuccess, handleError('Error creating user'));
         }
         // param.name
