@@ -27,6 +27,10 @@
         function CreateCat(param) {
             return $http.post('http://localhost:8080/addCat',param).then(handleSuccess, handleError('Error creating user'));
         }
+        // param.id
+        function DeleteCat(param) {
+            return $http.post('http://localhost:8080/deleteCat',param).then(handleSuccess, handleError('Error creating user'));
+        }
 
         // private functions
 
