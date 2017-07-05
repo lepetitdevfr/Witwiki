@@ -1,4 +1,14 @@
-﻿
+
+Trier par :
+<select class="" ng-model="mv.tri" name="">
+    <option value="title">Titre</option>
+    <option value="date">Date</option>
+    <option value="categorie">Catégorie</option>
+</select>
+
+<select class="btn btn-default" ng-options="cat.id as cat.name for cat in vm.allCat" ng-model="user.id_role" class="" name=""></select>
+
+
 <div ng-repeat="article in vm.allArticles" class="">
     <h3>{{article.title}}</h3>
     <p>{{article.preface}}</p>

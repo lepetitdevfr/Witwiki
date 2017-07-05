@@ -12,9 +12,6 @@
                 loadAllUsers();
                 loadAllRoles();
                 loadAllCat();
-
-                var data = [{name: "Moroni", age: 50} /*,*/];
-                vm.tableParams = new NgTableParams({}, { dataset: data});
             }else {
                 $location.path('/');
             }
