@@ -12,6 +12,6 @@ Trier par :
 <div ng-repeat="article in vm.allArticles" class="">
     <h3>{{article.title}}</h3>
     <p>{{article.preface}}</p>
-    Date de création : {{article.date_add}}
-    Date de derniere modification : {{article.date_update}}
+    Date de création : {{article.date_add |date:'medium'}}
+    Date de derniere modification : {{article.date_update |date:'medium'}}
 </div>
