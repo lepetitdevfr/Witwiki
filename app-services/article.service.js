@@ -12,7 +12,7 @@
         service.CreateArticle = CreateArticle;
         service.GetAllArticles = GetAllArticles;
         service.UpdateArticle = UpdateArticle;
-
+        service.DeleteArticle = DeleteArticle;
         return service;
 
         function GetAllArticles() {

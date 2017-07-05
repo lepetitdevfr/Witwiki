@@ -12,6 +12,7 @@
         service.CreateCat = CreateCat;
         service.GetAllCat = GetAllCat;
         service.UpdateCat = UpdateCat;
+        service.DeleteCat = DeleteCat;
 
         return service;
 
