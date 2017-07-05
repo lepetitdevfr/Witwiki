@@ -4,12 +4,8 @@ var app        = express();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
 var passwordHash = require('password-hash');
-var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'root',
-	database : 'witwiki'
-});
+var cred = require('./bdd');
+var connection = mysql.createConnection(cred);
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
