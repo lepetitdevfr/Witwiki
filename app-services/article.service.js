@@ -5,7 +5,7 @@
         .module('app')
         .factory('ArticleService', ArticleService);
 
-    UserService.$inject = ['$http'];
+    ArticleService.$inject = ['$http'];
     function ArticleService($http) {
         var service = {};
 
