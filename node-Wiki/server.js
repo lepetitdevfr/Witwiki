@@ -147,7 +147,8 @@ app.get('/getAllArticles',function (req,res) {
 app.post('/updateArticle', function (req,res) {
 	console.log('updateArticle');
 	var params = req.body;
-	connection.query("UPDATE article SET title='"+params.title+"',content='"+params.content+"',id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
+	var date = new Date();
+	connection.query("UPDATE article SET title='"+params.title+"',content='"+params.content+"',date_update="+date.getTime()+",id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
 		try{
 			res.json({code:200});
 		}catch(e){
@@ -156,13 +157,16 @@ app.post('/updateArticle', function (req,res) {
 	})
 });
 
-app.post('/addArticles', function(req, res) {
-	console.log("addArticles");
+app.post('/addArticle', function(req, res) {
+	console.log("addArticle");
 	var params = req.body;
-	connection.query('INSERT INTO article (title, content, id_categorie) VALUES ("'+params.title+'","'+params.content+'","'+params.idCat+'")', function (error, results, fields) {
+	var date = new Date();
+	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie) VALUES ("'+params.title+'","'+params.content+'",'+date.getTime()+','+date.getTime()+',"'+params.idCat+'")', function (error, results, fields) {
 		if (error) {
+			console.log(error);
 			res.json(error)
 		}else{
+			console.log(results);
 			res.json(results);
 		}
 	});

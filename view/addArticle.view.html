@@ -2,10 +2,19 @@
 
 
 <h1>Ajout d'un article</h1>
-<hr>
-<input type="text" name="" value="">
-<hr>
-<textarea></textarea>
-<hr>
-<text-angular ng-model="htmlVariable"></text-angular>
-<button type="button" ng-click='vm.getHtml(htmlVariable)' name="button">Ajouter</button>
+<form name="form" ng-submit="vm.addArticle(title,preface,content)" role="form">
+	<div class="form-group">
+		<input ng-model="title" type="text" name="title" value="">
+	</div>
+	<div class="form-group">
+		<textarea ng-model="preface"></textarea>
+	</div>
+	<div class="form-group">
+		<text-angular ng-model="content"></text-angular>
+	</div>
+	<div class="form-group">
+		<text-angular ng-model="content"></text-angular>
+	</div>
+	<button type="submit" name="button" class="btn btn-primary">Ajouter</button>	
+</form>
+

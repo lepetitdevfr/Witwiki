@@ -2,23 +2,25 @@
     'use strict';
 
     angular
-        .module('app')
-        .controller('addArticleController', addArticleController);
+    .module('app')
+    .controller('addArticleController', addArticleController);
 
-    addArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager'];
-    function addArticleController(ArticleService, $rootScope, textAngularManager) {
+    addArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager', 'CatService'];
+    function addArticleController(ArticleService, $rootScope, textAngularManager, CatService) {
         var vm = this;
-        vm.htmlVariable = "";
-        initController();
 
-        console.log(textAngularManager);
+        initController();
 
         function initController() {
             console.log()
         }
 
-        vm.getHtml = function(htmlVariable) {
-            console.log(htmlVariable);
+        vm.addArticle = function (title,preface,content) {
+            var params = {title:title,preface:preface,content:content};
+            ArticleService.CreateArticle(params)
+            .then(function (response) {
+                console.log(response);
+            });
         }
 
     }
