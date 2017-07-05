@@ -5,7 +5,7 @@
         .module('app')
         .factory('CatService', CatService);
 
-    UserService.$inject = ['$http'];
+    CatService.$inject = ['$http'];
     function CatService($http) {
         var service = {};
 
@@ -20,6 +20,7 @@
         }
         // param.name , param.id
         function UpdateCat(param) {
+            console.log(param);
             return $http.post('http://localhost:8080/updateCat',param).then(handleSuccess, handleError('Error creating user'));
         }
         // param.name

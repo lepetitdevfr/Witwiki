@@ -1,5 +1,5 @@
 <h1>Administration</h1>
-
+<h2>Utilisateur</h2>
 <table style="width:100%">
     <tr>
         <th>Pseudo</th>
@@ -16,10 +16,21 @@
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
         <td>
-            <select ng-options="role.id as role.name for role in vm.allRoles" ng-model="user.id_role" class="" name="">
-                <!-- <option ng-repeat="role in vm.allRoles" value="{{role.id}}" ng-selected="role.id == user.id_role">{{role.name}}</option> -->
-            </select>
+            <select ng-options="role.id as role.name for role in vm.allRoles" ng-model="user.id_role" class="" name=""></select>
         </td>
         <td><button type="button" ng-click="vm.updateRoleUser(user)" name="button">Valider</button></td>
+    </tr>
+</table>
+<h2>Catégorie</h2>
+<table style="width:100%">
+    <tr>
+        <th>Nom</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+    </tr>
+    <tr ng-repeat="cat in vm.allCat">
+        <td><input type="text" ng-model="cat.name" name="" value=""></td>
+        <td><button type="button" ng-click="vm.updateCat(cat)" name="button">Valider</button></td>
+        <td><button type="button" ng-click="vm.daleteCat(cat)" name="button">Valider</button></td>
     </tr>
 </table>

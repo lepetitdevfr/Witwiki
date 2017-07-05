@@ -7,7 +7,7 @@ var passwordHash = require('password-hash');
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
-	password : 'root',
+	password : '',
 	database : 'witwiki'
 });
 
@@ -104,7 +104,7 @@ app.get('/getAllCat',function (req,res) {
 app.post('/updateCat', function (req,res) {
 	console.log('updateCat');
 	var params = req.body;
-	connection.query("UPDATE categorie SET name="+params.name+" WHERE id="+params.id, function (error, results, fields) {
+	connection.query("UPDATE categorie SET name='"+params.name+"' WHERE id="+params.id, function (error, results, fields) {
 		try{
 			res.json({code:200});
 		}catch(e){
