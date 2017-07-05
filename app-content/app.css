@@ -1,3 +1,7 @@
 ﻿a {
     cursor: pointer;
 }
+
+i.date{
+	font-size: 12px;
+}
