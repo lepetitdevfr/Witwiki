@@ -125,7 +125,52 @@ app.post('/addCat', function(req, res) {
 	});
 });
 
+app.post('/deleteArticle', function(req, res) {
+	console.log("deleteArticle");
+	var params = req.body;
+	connection.query('DELETE FROM article WHERE id='+params.id, function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
 
+// ARTICLES
+// =============================================================================
+
+app.get('/getAllArticles',function (req,res) {
+	console.log("getAllArticles");
+	connection.query('SELECT * FROM articles', function (error, results, fields) {
+		if (error) throw error;
+		res.json(results);
+	});
+});
+
+app.post('/updateArticle', function (req,res) {
+	console.log('updateArticle');
+	var params = req.body;
+	connection.query("UPDATE article SET title='"+params.title+"',content='"+params.content+"',id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
+		try{
+			res.json({code:200});
+		}catch(e){
+			res.json({code:500,message:"Update error."})
+		}
+	})
+});
+
+app.post('/addArticles', function(req, res) {
+	console.log("addArticles");
+	var params = req.body;
+	connection.query('INSERT INTO article (title, content, id_categorie) VALUES ("'+params.title+'","'+params.content+'","'+params.idCat+'")', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
 
 
 // START THE SERVER
