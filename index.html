@@ -15,7 +15,7 @@
                 <ul class="nav nav-tabs">
                     <li><a ng-href="./">Accueil</a></li>
                     <li ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
-                    <li><a ng-href="#!/login">Déconnexion</a></li>
+                    <li><a ng-if="$root.globals.currentUser" ng-href="#!/login">Déconnexion</a></li>
                 </ul>
                 <div ng-view></div>
             </div>
