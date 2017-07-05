@@ -32,7 +32,7 @@
     </tr>
     <tr ng-repeat="cat in vm.allCat">
         <td><input type="text" ng-model="cat.name" name="" value=""></td>
-        <td><button type="button" ng-click="vm.updateCat(cat)" name="button">Valider</button></td>
-        <td><button type="button" ng-click="vm.deleteCat(cat.id)" name="button">Valider</button></td>
+        <td><a href="javascript:void(0)" ng-click="vm.updateCat(cat)"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></td>
+        <td><a ng-click="vm.deleteCat(cat.id)" href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
     </tr>
 </table>
