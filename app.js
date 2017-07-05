@@ -33,6 +33,12 @@
                 controllerAs: 'vm'
             })
 
+            .when('/addArticle', {
+                controller: 'addArticleController',
+                templateUrl: 'view/addArticle.view.html',
+                controllerAs: 'vm'
+            })
+
             .otherwise({ redirectTo: '/login' });
     }
 
