@@ -1,3 +1,7 @@
-﻿<h1>Bonjour {{vm.user.firstname}}!</h1>
-<p>Bienvenue sur Witwiki !</p>
-
+﻿
+<div ng-repeat="article in vm.allArticles" class="">
+    <h3>{{article.title}}</h3>
+    <p>{{article.preface}}</p>
+    Date de création : {{article.date_add}}
+    Date de derniere modification : {{article.date_update}}
+</div>

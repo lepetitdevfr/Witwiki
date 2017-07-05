@@ -59,7 +59,6 @@
         function loadAllUsers() {
             UserService.GetAllUsers()
             .then(function (content) {
-                // vm.allUsers = content.data;
                 vm.allUsers = new NgTableParams({}, { dataset: content.data});
             });
         }
@@ -75,7 +74,6 @@
             CatService.GetAllCat()
             .then(function (content) {
                 vm.allCat = new NgTableParams({}, { dataset: content.data});
-                // vm.allCat = content.data;
             });
         }
 
