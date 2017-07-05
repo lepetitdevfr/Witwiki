@@ -39,9 +39,7 @@
     <tr ng-repeat="cat in $data">
         <td title="'Nom'" filter="{ name: 'text'}" sortable="'name'">
             <input  class="form-control" type="text" ng-model="cat.name" name="" value="">
-            <!-- {{cat.name}} -->
         </td>
-        <!-- <td><input  class="form-control" type="text" ng-model="cat.name" name="" value=""></td> -->
         <td><a href="javascript:void(0)" ng-click="vm.updateCat(cat)"><i class="fa fa-floppy-o  fa-2x" aria-hidden="true"></i></a></td>
         <td><a ng-click="vm.deleteCat(cat.id)" href="javascript:void(0)"><i class="fa fa-trash-o  fa-2x" aria-hidden="true"></i></a></td>
     </tr>

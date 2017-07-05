@@ -138,7 +138,7 @@ app.post('/deleteCat', function(req, res) {
 
 app.get('/getAllArticles',function (req,res) {
 	console.log("getAllArticles");
-	connection.query('SELECT * FROM articles', function (error, results, fields) {
+	connection.query('SELECT * FROM article', function (error, results, fields) {
 		if (error) throw error;
 		res.json(results);
 	});

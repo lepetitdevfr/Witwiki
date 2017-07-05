@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 11:55 AM
+-- Generation Time: Jul 05, 2017 at 02:17 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -59,9 +59,9 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`id`, `name`) VALUES
-(3, 'fsdfdsfdsfsdfdsf'),
-(2, 'test'),
-(16, 'testé');
+(37, 'Bateau'),
+(38, 'Vélo'),
+(36, 'Voiture');
 
 -- --------------------------------------------------------
 
@@ -181,7 +181,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `comment`
 --

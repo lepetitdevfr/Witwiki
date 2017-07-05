@@ -1,25 +1,26 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
-        .module('app')
-        .controller('HomeController', HomeController);
+    .module('app')
+    .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['ArticleService', '$rootScope'];
+    function HomeController(ArticleService, $rootScope) {
         var vm = this;
 
-        vm.user = null;
-
-        initController();
-
-        function initController() {
-            loadCurrentUser();
+        function init() {
+            loadAllArticles();
         }
 
-        function loadCurrentUser() {
-            vm.user = $rootScope.globals.currentUser;
+        function loadAllArticles() {
+            ArticleService.GetAllArticles()
+            .then(function (content) {
+                vm.allArticles = content.data;
+            });
         }
+
+        init();
     }
 
 })();
