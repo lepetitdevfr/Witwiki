@@ -7,7 +7,7 @@ var passwordHash = require('password-hash');
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
-	password : '',
+	password : 'root',
 	database : 'witwiki'
 });
 
@@ -125,10 +125,10 @@ app.post('/addCat', function(req, res) {
 	});
 });
 
-app.post('/deleteArticle', function(req, res) {
-	console.log("deleteArticle");
+app.post('/deleteCat', function(req, res) {
+	console.log("deleteCat");
 	var params = req.body;
-	connection.query('DELETE FROM article WHERE id='+params.id, function (error, results, fields) {
+	connection.query('DELETE FROM categorie WHERE id='+params.id, function (error, results, fields) {
 		if (error) {
 			res.json(error)
 		}else{
