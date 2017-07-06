@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2017 at 12:57 PM
+-- Generation Time: Jul 06, 2017 at 01:38 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -107,7 +107,8 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `content` varchar(5000) NOT NULL,
-  `id_article` int(11) NOT NULL
+  `id_article` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,6 +122,21 @@ CREATE TABLE `media` (
   `url` varchar(1000) NOT NULL,
   `commentaire` varchar(5000) NOT NULL,
   `id_categorie` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `content` varchar(5000) NOT NULL,
+  `date` datetime NOT NULL,
+  `id_from` int(11) DEFAULT NULL,
+  `id_to` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -192,7 +208,8 @@ ALTER TABLE `categorie`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_article` (`id_article`);
+  ADD KEY `id_article` (`id_article`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `media`
@@ -200,6 +217,14 @@ ALTER TABLE `comment`
 ALTER TABLE `media`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_categorie` (`id_categorie`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_to` (`id_to`),
+  ADD KEY `id_from` (`id_from`);
 
 --
 -- Indexes for table `role`
@@ -241,6 +266,11 @@ ALTER TABLE `comment`
 ALTER TABLE `media`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
@@ -265,13 +295,21 @@ ALTER TABLE `article`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `article` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `article` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `media`
 --
 ALTER TABLE `media`
   ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_from`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`id_to`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user`
