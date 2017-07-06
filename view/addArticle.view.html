@@ -4,18 +4,22 @@
 <h1>Ajout d'un article</h1>
 <form name="form" ng-submit="vm.addArticle(title,preface,content,idCat)" role="form">
 	<div class="form-group">
-		<input ng-model="title" type="text" name="title" value="">
+		<label for="title">Titre</label>
+		<input class="form-control" ng-model="title" type="text" id="title" name="title" value="">
 	</div>
 	<div class="form-group">
-		<textarea ng-model="preface"></textarea>
-	</div>
-
-	<div class="form-group">
-		<select class="btn btn-default" ng-options="cat.id as cat.name for cat in vm.allCat" ng-model="idCat" class="" name=""></select>
+		<label for="preface">Préface</label>
+		<textarea class="form-control" ng-model="preface" id="preface"></textarea>
 	</div>
 
 	<div class="form-group">
-		<text-angular ng-model="content"></text-angular>
+		<label for="cat">Catégorie</label>
+		<select class="form-control" id="cat" ng-options="cat.id as cat.name for cat in vm.allCat" ng-model="idCat" name=""></select>
+	</div>
+
+	<div class="form-group">
+		<label for="cont">Contenu</label>
+		<text-angular ng-model="content" id="cont"></text-angular>
 	</div>
 	<button type="submit" name="button" class="btn btn-primary">Ajouter</button>
 </form>

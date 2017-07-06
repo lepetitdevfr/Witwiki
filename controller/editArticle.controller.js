@@ -16,13 +16,17 @@
         }
 
         vm.deleteArticle = function () {
-            var params = {id:vm.article.id};
-            ArticleService.DeleteArticle(params)
-            .then(function (response) {
-                if (response.success) {
-                    $location.path('/');
-                }
-            });
+            var r=confirm("Voulez vous vraiment supprimer l'article ?");
+            if (r==true)
+            {
+                var params = {id:vm.article.id};
+                ArticleService.DeleteArticle(params)
+                .then(function (response) {
+                    if (response.success) {
+                        $location.path('/');
+                    }
+                });
+            }
         }
 
         function loadArticle() {
