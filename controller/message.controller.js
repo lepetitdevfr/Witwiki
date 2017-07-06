@@ -34,12 +34,18 @@
             });
         }
 
+        vm.reply = function(message) {
+            console.log(message);
+            vm.title = message.title;
+            vm.dest = message.content;
+
+        }
+
         vm.readMessage = function(id) {
             var idReq = {id:id};
-            console.log(idReq);
             MessageService.ReadMessage(idReq)
             .then(function (response) {
-                console.log("fsd");
+                loadInMessage();
             });
         }
 

@@ -1,16 +1,17 @@
+<h4>Nouveau message</h4>
 <div class="form-group">
-<label for="title">Titre</label>
-<input class="form-control" ng-model="vm.title" type="text" id="title" name="title" value="">
+    <label for="title">Titre</label>
+    <input class="form-control" ng-model="vm.title" type="text" id="title" name="title" value="">
 </div>
 
 <div class="form-group">
-<label for="dest">Déstinataire</label>
-<select class="form-control" ng-options="dest.id as dest.pseudo for dest in vm.dests" id="dest" ng-model="vm.dest" name=""></select>
+    <label for="dest">Déstinataire</label>
+    <select class="form-control" ng-options="dest.id as dest.pseudo for dest in vm.dests" id="dest" ng-model="vm.dest" name=""></select>
 </div>
 
 <div class="form-group">
-<label for="message">Message</label>
-<textarea class="form-control" id="message" ng-model="vm.message"></textarea>
+    <label for="message">Message</label>
+    <textarea class="form-control" id="message" ng-model="vm.message"></textarea>
 </div>
 
 <button type="submit" name="button" ng-click="vm.newMessage()" class="btn btn-default">Envoyer</button>
@@ -19,20 +20,22 @@
 
 <h4>Message reçu {{vm.messagesIn.length}}</h4>
 <div ng-repeat="message in vm.messagesIn" class="panel panel-default">
-<div class="panel-heading"><a href="javascript:void(0)" ng-click="vm.readMessage(message.id)"><span class="badge">Non lu</span></a>&nbsp;{{message.title}}<span class=""></span></div>
-<div class="panel-body">
-    {{message.content}}
-</div>
+    <div class="panel-heading"><a href="javascript:void(0)" ng-click="vm.readMessage(message.id)"><span ng-show="!message.lu" class="badge">Non lu</span></a>&nbsp;{{message.title}}<span class=""></span><span class="text-muted  pull-right"><strong><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{message.pseudo}}</strong> <i class="fa fa-calendar  fa" aria-hidden="true"></i>&nbsp;{{message.date |date:'medium'}}</span></div>
+    <div class="panel-body">
+        {{message.content}}
+        <a ng-click="vm.reply(message)" class="btn btn-default btn-xs pull-right">Répondre</a>
+    </div>
+
 </div>
 <div ng-show="!vm.messagesIn.length">Pas de message</div>
 
 <hr>
 
-<h4>Message envoyé</h4>
+<h4>Message envoyé {{vm.messagesOut.length}}</h4>
 <div ng-repeat="message in vm.messagesOut" class="panel panel-default">
-<div class="panel-heading">{{message.title}}<span class=""></span></div>
-<div class="panel-body">
-    {{message.content}}
-</div>
+    <div class="panel-heading">{{message.title}}</span><span class="text-muted  pull-right"><strong><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{message.pseudo}}</strong> <i class="fa fa-calendar  fa" aria-hidden="true"></i>&nbsp;{{message.date |date:'medium'}}</span></div>
+    <div class="panel-body">
+        {{message.content}}
+    </div>
 </div>
 <div ng-show="!vm.messagesOut.length">Pas de message</div>
