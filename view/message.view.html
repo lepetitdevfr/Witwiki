@@ -1,4 +1,7 @@
+<hr>
+
 <h4>Nouveau message</h4>
+
 <div class="form-group">
     <label for="title">Titre</label>
     <input class="form-control" ng-model="vm.title" type="text" id="title" name="title" value="">
@@ -15,12 +18,13 @@
 </div>
 
 <button type="submit" name="button" ng-click="vm.newMessage()" class="btn btn-default">Envoyer</button>
+<button type="submit" name="button" ng-click="vm.new()" class="btn btn-danger pull-right">Nouveau</button>
 
 <hr>
 
 <h4>Message reçu {{vm.messagesIn.length}}</h4>
 <div ng-repeat="message in vm.messagesIn" class="panel panel-default">
-    <div class="panel-heading"><a href="javascript:void(0)" ng-click="vm.readMessage(message.id)"><span ng-show="!message.lu" class="badge">Non lu</span></a>&nbsp;{{message.title}}<span class=""></span><span class="text-muted  pull-right"><strong><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{message.pseudo}}</strong> <i class="fa fa-calendar  fa" aria-hidden="true"></i>&nbsp;{{message.date |date:'medium'}}</span></div>
+    <div class="panel-heading"><a href="javascript:void(0)" ng-click="vm.readMessage(message.id)"><span ng-show="!message.lu" class="badge">Non lu</span></a>&nbsp;{{message.title}}<span class="text-muted  pull-right"><strong><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{message.pseudo}}</strong> <i class="fa fa-calendar  fa" aria-hidden="true"></i>&nbsp;{{message.date |date:'medium'}}</span></div>
     <div class="panel-body">
         {{message.content}}
         <a ng-click="vm.reply(message)" class="btn btn-default btn-xs pull-right">Répondre</a>

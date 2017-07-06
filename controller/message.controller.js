@@ -22,7 +22,8 @@
                 var message = {title:vm.title,content:vm.message,to:vm.dest,from:$rootScope.globals.currentUser.id};
                 MessageService.AddMessage(message)
                 .then(function (content) {
-                    $location.path('/');
+                    loadOutMessage();
+                    vm.new();
                 });
             }
         }
@@ -35,10 +36,14 @@
         }
 
         vm.reply = function(message) {
-            console.log(message);
             vm.title = message.title;
-            vm.dest = message.content;
+            vm.dest = message.fromId;
+        }
 
+        vm.new = function() {
+            vm.title = "";
+            vm.dest = "";
+            vm.message = "";
         }
 
         vm.readMessage = function(id) {
