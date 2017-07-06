@@ -3,10 +3,10 @@
 
     angular
     .module('app')
-    .controller('addArticleController', addArticleController);
+    .controller('AddArticleController', AddArticleController);
 
-    addArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager', 'CatService'];
-    function addArticleController(ArticleService, $rootScope, textAngularManager, CatService) {
+    AddArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager', 'CatService'];
+    function AddArticleController(ArticleService, $rootScope, textAngularManager, CatService) {
         var vm = this;
 
         initController();

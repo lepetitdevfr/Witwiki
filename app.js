@@ -34,8 +34,14 @@
             })
 
             .when('/addArticle', {
-                controller: 'addArticleController',
+                controller: 'AddArticleController',
                 templateUrl: 'view/addArticle.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/editArticle/:id', {
+                controller: 'EditArticleController',
+                templateUrl: 'view/editArticle.view.html',
                 controllerAs: 'vm'
             })
 
