@@ -19,12 +19,12 @@
     </div>
 </form>
 
-<div ng-repeat="article in vm.allArticles" class="">
+<article ng-repeat="article in vm.allArticles" class="">
     <h3><a href="#!/article/{{article.id}}">{{article.title}}</a></h3>
     <p>{{article.preface}}</p>
-    <i class="date">Date de création : {{article.date_add |date:'medium'}}</i><br>
-    <i class="date">Date de derniere modification : {{article.date_update |date:'medium'}}</i>
-</div>
+    <i class="fa fa-user-o  fa" aria-hidden="true"></i> {{article.auteur}}<br>
+    <i class="fa fa-calendar  fa" aria-hidden="true"></i> {{article.date_update |date:'medium'}}
+</article>
 
 <div ng-if="vm.noArticle">
     <p>Pas d'article</p>

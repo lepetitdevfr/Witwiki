@@ -38,7 +38,7 @@
             ArticleService.GetArticles(param)
             .then(function (content) {
                 vm.allArticles = content.data;
-                numberArticle = vm.allArticles.length;
+                numberArticle = vm.allArticles.nbArticle;
                 if (numberArticle == 0) {
                     vm.noArticle = true;
                 }else {
@@ -56,6 +56,7 @@
 
         function pagination() {
             var nbrPage = Math.ceil(numberArticle / 10);
+            console.log(numberArticle);
             vm.paginationArray = [];
 
             for (var i = 0; i < nbrPage; i++) {
