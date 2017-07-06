@@ -14,6 +14,8 @@
         service.GetArticles = GetArticles;
         service.UpdateArticle = UpdateArticle;
         service.DeleteArticle = DeleteArticle;
+        service.GetCom = GetCom;
+        service.AddCom = AddCom;
         return service;
 
         // param.id
@@ -35,6 +37,15 @@
         // param.id
         function DeleteArticle(param) {
             return $http.post('http://localhost:8080/deleteArticle',param).then(handleSuccess, handleError('Error creating user'));
+        }
+
+        // param.content, param.idArticle, param.idUser
+        function AddCom(param) {
+            return $http.post('http://localhost:8080/addCom',param).then(handleSuccess, handleError('Error creating user'));
+        }
+        // param.idArticle
+        function GetCom(param){
+            return $http.get('http://localhost:8080/getCom', {params:param}).then(handleSuccess, handleError('Error creating user'));
         }
 
         // private functions
