@@ -5,8 +5,8 @@
     .module('app')
     .controller('AddArticleController', AddArticleController);
 
-    AddArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager', 'CatService'];
-    function AddArticleController(ArticleService, $rootScope, textAngularManager, CatService) {
+    AddArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager', 'CatService', '$location'];
+    function AddArticleController(ArticleService, $rootScope, textAngularManager, CatService, $location) {
         var vm = this;
 
         initController();
@@ -21,6 +21,9 @@
             ArticleService.CreateArticle(params)
             .then(function (response) {
                 console.log(response);
+                if (response.success) {
+                    $location.path('/');
+                }
             });
         }
 

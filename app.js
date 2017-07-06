@@ -33,6 +33,12 @@
                 controllerAs: 'vm'
             })
 
+            .when('/message', {
+                controller: 'MessageController',
+                templateUrl: 'view/message.view.html',
+                controllerAs: 'vm'
+            })
+
             .when('/addArticle', {
                 controller: 'AddArticleController',
                 templateUrl: 'view/addArticle.view.html',
