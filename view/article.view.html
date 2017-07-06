@@ -1,5 +1,6 @@
 
 <h1>{{vm.article.title}}</h1>
+<a ng-if="(($root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1)  && $root.globals.currentUser.pseudo == vm.article.auteur) ||$root.globals.currentUser.id_role == 1" class="btn btn-primary" href="#!/editArticle/{{vm.article.id}}">Modifier</a><br>
 <i class="date">Catégorie : {{vm.article.nameCat |date:'medium'}}</i><br>
 <i class="date">Date de création : {{vm.article.date_add |date:'medium'}}</i>
 

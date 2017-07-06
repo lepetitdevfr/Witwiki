@@ -12,17 +12,15 @@
         initController();
 
         function initController() {
-            loadAllCat();
             loadArticle();
         }
 
-        vm.editArticle = function () {
-            var params = {title:vm.title,preface:vm.preface,content:vm.content,idCat:vm.idCat,id:$routeParams.id};
-            ArticleService.UpdateArticle(params)
+        vm.deleteArticle = function () {
+            var params = {id:vm.article.id};
+            ArticleService.DeleteArticle(params)
             .then(function (response) {
-                console.log(response);
                 if (response.success) {
-                    $location.path('/article/'+$routeParams.id);
+                    $location.path('/');
                 }
             });
         }
@@ -32,11 +30,15 @@
             ArticleService.GetArticleById(id)
             .then(function (content) {
                 vm.article = content.data;
-                console.log(vm.article);
                 vm.content = vm.article.content;
                 vm.title = vm.article.title;
                 vm.preface = vm.article.preface;
                 vm.idCat = vm.article.catId;
+                if ((($rootScope.globals.currentUser.id_role == 2 || $rootScope.globals.currentUser.id_role == 1)  && $rootScope.globals.currentUser.pseudo == vm.article.auteur) ||$rootScope.globals.currentUser.id_role == 1) {
+                    loadAllCat();
+                }else {
+                    $location.path('/');
+                }
             });
         }
 
