@@ -45,7 +45,7 @@ app.post('/login', function (req, res) {
 // =============================================================================
 app.get('/getAllUsers',function (req,res) {
 	console.log("getAllUsers");
-	connection.query('SELECT pseudo, lastname, firstname, email, id_role FROM user', function (error, results, fields) {
+	connection.query('SELECT id ,pseudo, lastname, firstname, email, id_role FROM user', function (error, results, fields) {
 		if (error) throw error;
 		res.json(results);
 	});
