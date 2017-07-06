@@ -28,7 +28,7 @@
         function UpdateArticle(param) {
             return $http.post('http://localhost:8080/updateArticle',param).then(handleSuccess, handleError('Error creating user'));
         }
-        // param.title , param.content, param.preface ,param.idCat
+        // param.title , param.content, param.preface ,param.idCat, param.idAuteur
         function CreateArticle(param) {
             return $http.post('http://localhost:8080/addArticle',param).then(handleSuccess, handleError('Error creating user'));
         }

@@ -139,7 +139,7 @@ app.post('/deleteCat', function(req, res) {
 app.get('/getArticleById',function (req,res) {
 	console.log("getArticleById");
 	var params = req.query;
-	connection.query('SELECT DISTINCT a.id, a.title, a.content, a.preface, a.date_add, a.date_update, c.id AS "catId", c.name AS "nameCat" FROM article AS a,categorie AS c WHERE a.id_categorie = c.id AND a.id ='+params.id, function (error, results, fields) {
+	connection.query('SELECT DISTINCT a.id, a.title, a.content, a.preface, a.date_add, a.date_update, c.id AS "catId", c.name AS "nameCat", u.pseudo AS "auteur" FROM article AS a,categorie AS c, user AS u WHERE a.id_categorie = c.id AND a.id_auteur=u.id AND a.id ='+params.id, function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)
@@ -162,7 +162,7 @@ app.get('/getArticles',function (req,res) {
 	if (params.tri === "date") {
 		params.tri = 'date_update';
 	}
-	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat" FROM article, categorie WHERE article.id_categorie = categorie.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
+	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat", user.pseudo AS "auteur" FROM article, categorie, user WHERE article.id_categorie = categorie.id AND article.id_auteur = user.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)
@@ -190,7 +190,7 @@ app.post('/addArticle', function(req, res) {
 	var params = req.body;
 	console.log(params);
 	var date = new Date();
-	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie) VALUES ("'+params.title+'","'+params.content+'","'+params.preface+'",NOW(),NOW(),"'+params.idCat+'")', function (error, results, fields) {
+	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie, id_auteur) VALUES ("'+params.title+'","'+params.content+'","'+params.preface+'",NOW(),NOW(),"'+params.idCat+'","'+params.idAuteur+'")', function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)
