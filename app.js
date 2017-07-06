@@ -39,6 +39,12 @@
                 controllerAs: 'vm'
             })
 
+            .when('/article/:id', {
+                controller: 'ArticleController',
+                templateUrl: 'view/article.view.html',
+                controllerAs: 'vm'
+            })
+
             .otherwise({ redirectTo: '/login' });
     }
 

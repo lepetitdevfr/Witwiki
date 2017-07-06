@@ -8,7 +8,7 @@
     HomeController.$inject = ['ArticleService', '$rootScope','CatService'];
     function HomeController(ArticleService, $rootScope, CatService) {
         var vm = this;
-        var numberArticle = 23;
+        var numberArticle = 1;
 
         vm.changeReq = function(pagination) {
             if (pagination != undefined) {
@@ -17,7 +17,6 @@
 
             var paramReq = {cat:vm.cat,tri:vm.tri,page:vm.pagination.sqlInfo};
             loadArticles(paramReq);
-            console.log(paramReq);
         }
 
         function init() {
@@ -39,6 +38,12 @@
             ArticleService.GetArticles(param)
             .then(function (content) {
                 vm.allArticles = content.data;
+                numberArticle = vm.allArticles.length;
+                if (numberArticle == 0) {
+                    vm.noArticle = true;
+                }else {
+                    vm.noArticle = false;
+                }
             });
         }
 
