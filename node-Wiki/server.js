@@ -144,6 +144,16 @@ app.get('/getAllArticles',function (req,res) {
 	});
 });
 
+app.get('/getArticles',function (req,res) {
+	console.log("getArticles");
+	console.log(req);
+	console.log(req.body);
+	connection.query('SELECT * FROM article WHERE id_categorie IS NOT NULL ORDER BY date_update ASC LIMIT 0,10', function (error, results, fields) {
+		if (error) throw error;
+		res.json(results);
+	});
+});
+
 app.post('/updateArticle', function (req,res) {
 	console.log('updateArticle');
 	var params = req.body;

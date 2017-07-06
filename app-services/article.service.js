@@ -11,12 +11,20 @@
 
         service.CreateArticle = CreateArticle;
         service.GetAllArticles = GetAllArticles;
+        service.GetArticles = GetArticles;
         service.UpdateArticle = UpdateArticle;
         service.DeleteArticle = DeleteArticle;
         return service;
 
         function GetAllArticles() {
             return $http.get('http://localhost:8080/getAllArticles').then(handleSuccess, handleError('Error creating user'));
+        }
+        // {cat: "41", tri: "date", page: 10}
+        function GetArticles(param) {
+            var config = {
+                params:param
+            }
+            return $http.get('http://localhost:8080/getArticles', config).then(handleSuccess, handleError('Error creating user'));
         }
         // param.title , param.content, param.idCat, param.id
         function UpdateArticle(param) {
