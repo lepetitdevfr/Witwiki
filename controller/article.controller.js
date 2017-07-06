@@ -9,8 +9,6 @@
     function ArticleController(ArticleService, $rootScope, $routeParams) {
         var vm = this;
 
-        console.log($routeParams.id);
-
         initController();
 
         function initController() {
@@ -22,7 +20,6 @@
             ArticleService.GetArticleById(id)
             .then(function (content) {
                 vm.article = content.data;
-                console.log(vm.article);
             });
         }
 

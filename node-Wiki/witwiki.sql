@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2017 at 11:33 AM
+-- Generation Time: Jul 06, 2017 at 12:57 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -42,8 +42,40 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `title`, `content`, `preface`, `date_add`, `date_update`, `id_categorie`, `id_auteur`) VALUES
-(4, 'test', '<p>test</p>', 'test', '2017-07-05 00:00:00', '2017-07-05 00:00:00', 37, NULL),
-(6, 'test', '<p>Test 2</p>', 'test', '2017-07-05 22:46:31', '2017-07-05 22:46:31', 37, NULL);
+(21, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:55', '2017-07-06 14:11:55', 38, 42),
+(22, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
+(23, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
+(24, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
+(25, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
+(26, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
+(27, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
+(28, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
+(29, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
+(30, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
+(31, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:00', '2017-07-06 14:12:00', 37, 42),
+(32, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:00', '2017-07-06 14:12:00', 37, 42),
+(33, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
+(34, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
+(35, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
+(36, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
+(37, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
+(38, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
+(39, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
+(40, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
+(41, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
+(42, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
+(43, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
+(44, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
+(45, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
+(46, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
+(47, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
+(48, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
+(49, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
+(50, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
+(51, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
+(52, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
+(53, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:06', '2017-07-06 14:12:06', 36, 42),
+(54, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:06', '2017-07-06 14:12:06', 36, 42);
 
 -- --------------------------------------------------------
 
@@ -76,6 +108,19 @@ CREATE TABLE `comment` (
   `date` datetime NOT NULL,
   `content` varchar(5000) NOT NULL,
   `id_article` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL,
+  `url` varchar(1000) NOT NULL,
+  `commentaire` varchar(5000) NOT NULL,
+  `id_categorie` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,7 +164,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `pseudo`, `lastname`, `firstname`, `email`, `password`, `id_role`) VALUES
-(42, 'test', 'test', 'test', 'test', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 1),
+(42, 'test', 'test', 'test', 'test', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 2),
 (44, 'test1', 'test', 'test', 'test1', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 2);
 
 --
@@ -150,6 +195,13 @@ ALTER TABLE `comment`
   ADD KEY `id_article` (`id_article`);
 
 --
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_categorie` (`id_categorie`);
+
+--
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
@@ -172,7 +224,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `categorie`
 --
@@ -183,6 +235,11 @@ ALTER TABLE `categorie`
 --
 ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `role`
 --
@@ -209,6 +266,12 @@ ALTER TABLE `article`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `article` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `media`
+--
+ALTER TABLE `media`
+  ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user`
