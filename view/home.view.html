@@ -7,7 +7,6 @@
         <select ng-change="vm.changeReq()" class="form-control" id="tri" ng-model="vm.tri">
             <option value="date">Défaut (date)</option>
             <option value="title">Titre</option>
-            <option value="categorie">Catégorie</option>
         </select>
     </div>
 
@@ -21,14 +20,17 @@
 </form>
 
 <div ng-repeat="article in vm.allArticles" class="">
-    <h3>{{article.title}}</h3>
+    <h3><a href="#!/article/{{article.id}}">{{article.title}}</a></h3>
     <p>{{article.preface}}</p>
     <i class="date">Date de création : {{article.date_add |date:'medium'}}</i><br>
-	<i class="date">Date de derniere modification : {{article.date_update |date:'medium'}}</i>
+    <i class="date">Date de derniere modification : {{article.date_update |date:'medium'}}</i>
+</div>
+<div ng-if="vm.noArticle">
+    <p>Pas d'article</p>
 </div>
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li ng-repeat="pagination in vm.paginationArray" class="page-item"><a ng-click="vm.changeReq(pagination)" class="page-link" href="javascript:void(0)">{{pagination.page}}</a></li>
-  </ul>
+    <ul class="pagination">
+        <li ng-repeat="pagination in vm.paginationArray" class="page-item"><a ng-click="vm.changeReq(pagination)" class="page-link" href="javascript:void(0)">{{pagination.page}}</a></li>
+    </ul>
 </nav>
