@@ -191,7 +191,7 @@ app.post('/updateArticle', function (req,res) {
 	console.log('updateArticle');
 	var params = req.body;
 	var date = new Date();
-	connection.query("UPDATE article SET title='"+params.title+"',content='"+params.content+"',date_update=NOW(),id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
+	connection.query("UPDATE article SET title='"+params.title+"',preface='"+params.preface+"',content='"+params.content+"',date_update=NOW(),id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
 		try{
 			res.json({code:200});
 		}catch(e){
