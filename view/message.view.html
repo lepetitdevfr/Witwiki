@@ -19,7 +19,7 @@
 
 <h4>Message reçu {{vm.messagesIn.length}}</h4>
 <div ng-repeat="message in vm.messagesIn" class="panel panel-default">
-<div class="panel-heading"><a href="#"><span class="badge">Non lu</span></a>&nbsp;{{message.title}}<span class=""></span></div>
+<div class="panel-heading"><a href="javascript:void(0)" ng-click="vm.readMessage(message.id)"><span class="badge">Non lu</span></a>&nbsp;{{message.title}}<span class=""></span></div>
 <div class="panel-body">
     {{message.content}}
 </div>

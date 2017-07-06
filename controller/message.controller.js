@@ -34,6 +34,15 @@
             });
         }
 
+        vm.readMessage = function(id) {
+            var idReq = {id:id};
+            console.log(idReq);
+            MessageService.ReadMessage(idReq)
+            .then(function (response) {
+                console.log("fsd");
+            });
+        }
+
         function loadInMessage() {
             var idUser = {idUser:$rootScope.globals.currentUser.id};
             MessageService.GetMessageIn(idUser)
