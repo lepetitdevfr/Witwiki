@@ -236,7 +236,7 @@ app.post('/deleteArticle', function(req, res) {
 app.post('/addCom', function(req, res) {
 	console.log("addCom");
 	var params = req.body;
-	connection.query('INSERT INTO comment (date, content, id_article, id_user) VALUES (NOW(),'+params.content+','+params.idArticle+','+params.idUser+')', function (error, results, fields) {
+	connection.query('INSERT INTO comment (date, content, id_article, id_user) VALUES (NOW(),"'+params.content+'",'+params.idArticle+','+params.idUser+')', function (error, results, fields) {
 		if (error) {
 			res.json(error)
 		}else{

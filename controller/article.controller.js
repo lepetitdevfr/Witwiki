@@ -13,9 +13,28 @@
 
         function initController() {
             loadArticle();
+            // loadComment();
         }
 
         function loadArticle() {
+            var id = {id:$routeParams.id};
+            ArticleService.GetArticleById(id)
+            .then(function (content) {
+                vm.article = content.data;
+            });
+        }
+
+        vm.sendComment = function() {
+            var comment = {content:vm.comment,idArticle:vm.article.id,idUser:$rootScope.globals.currentUser.id};
+            ArticleService.AddCom(comment)
+            .then(function (response) {
+                console.log(response);
+            });
+
+            console.log(comment);
+        }
+
+        function loadComment() {
             var id = {id:$routeParams.id};
             ArticleService.GetArticleById(id)
             .then(function (content) {

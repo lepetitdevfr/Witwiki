@@ -7,3 +7,10 @@
 <div ng-bind-html="vm.article.content"></div>
 
 Cette page a été modifiée pour la dernière fois à la date : {{vm.article.date_update |date:'medium'}}.
+<hr>
+<div class="form-group">
+    <label for="comment">Commentaire</label>
+    <textarea class="form-control" ng-model="vm.comment" id="comment"></textarea>
+</div>
+
+<button ng-click="vm.sendComment()" name="button" class="btn btn-primary">Envoyer</button>
