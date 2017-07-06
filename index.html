@@ -16,6 +16,7 @@
                 <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
                 <ul class="nav nav-tabs">
                     <li><a ng-href="./">Accueil</a></li>
+                    <li><a ng-href="#!/message">Message</a></li>
                     <li ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
                     <li ng-if="$root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1"><a ng-href="#!/addArticle">Créer un article</a></li>
                     <li><a ng-if="$root.globals.currentUser" ng-href="#!/login">Déconnexion</a></li>
@@ -57,5 +58,6 @@
     <script src="controller/addArticle.controller.js"></script>
     <script src="controller/editArticle.controller.js"></script>
     <script src="controller/upload.controller.js"></script>
+    <script src="controller/message.controller.js"></script>
 </body>
 </html>

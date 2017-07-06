@@ -22,7 +22,6 @@
 <hr>
 
 <div ng-repeat="article in vm.allArticles" class="panel panel-default">
-    <!-- Default panel contents -->
     <div class="panel-heading"><a href="#!/article/{{article.id}}">{{article.title}}</a><span class="pull-right"><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{article.auteur}}&nbsp;<i class="fa fa-calendar  fa" aria-hidden="true"></i> {{article.date_update |date:'medium'}}</span></div>
     <div class="panel-body">
         {{article.preface}}

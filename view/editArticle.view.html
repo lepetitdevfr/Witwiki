@@ -6,6 +6,7 @@
 		<label for="title">Titre</label>
 		<input class="form-control" ng-model="vm.title" type="text" id="title" name="title" value="">
 	</div>
+	
 	<div class="form-group">
 		<label for="preface">Préface</label>
 		<textarea class="form-control" id="preface" ng-model="vm.preface"></textarea>
@@ -20,6 +21,7 @@
 		<label for="cont">Contenu</label>
 		<text-angular id="cont" ng-model="vm.content"></text-angular>
 	</div>
+
 	<button type="submit" name="button" class="btn btn-primary">Modifier</button>
 	<button type="submit" name="button" ng-click="vm.deleteArticle()" class="btn btn-danger pull-right">Supprimer</button>
 </form>
