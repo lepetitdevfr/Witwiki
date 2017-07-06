@@ -162,7 +162,7 @@ app.get('/getArticles',function (req,res) {
 	if (params.tri === "date") {
 		params.tri = 'date_update';
 	}
-	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat", user.pseudo AS "auteur" FROM article, categorie, user WHERE article.id_categorie = categorie.id AND article.id_auteur = user.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
+	connection.query('SELECT COUNT(article.id) AS "nbArticle", article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat", user.pseudo AS "auteur" FROM article, categorie, user WHERE article.id_categorie = categorie.id AND article.id_auteur = user.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)
