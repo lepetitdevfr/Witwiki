@@ -144,7 +144,7 @@ app.get('/getArticleById',function (req,res) {
 			console.log(error);
 			res.json(error)
 		}else{
-			res.json(results);
+			res.json(results[0]);
 		}
 	});
 });
