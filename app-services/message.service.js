@@ -27,6 +27,10 @@
         function AddMessage(param) {
             return $http.post('http://localhost:8080/addMessage',param).then(handleSuccess, handleError('Error creating user'));
         }
+        // param.id
+        function ReadMessage(param){
+            return $http.post('http://localhost:8080/readMessage',param).then(handleSuccess, handleError('Error creating user'));
+        }
         
         // private functions
         function handleSuccess(res) {

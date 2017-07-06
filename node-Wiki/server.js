@@ -273,6 +273,18 @@ app.post('/addMessage', function (req, res) {
 	});
 });
 
+app.post('/readMessage', function (req, res) {
+	console.log("readMessage");
+	var params = req.body;
+	connection.query('UPDATE message SET lu=1 WHERE id='+params.id, function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
 app.get('/getMessageIn', function (req, res) {
 	console.log("getMessageIn");
 	var params = req.query;
@@ -319,6 +331,7 @@ app.post('/upload', function(req, res) {
              return;
         }
         res.json({error_code:0,err_desc:null});
+
     })
 });
 
