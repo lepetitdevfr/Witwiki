@@ -148,7 +148,7 @@ app.post('/updateArticle', function (req,res) {
 	console.log('updateArticle');
 	var params = req.body;
 	var date = new Date();
-	connection.query("UPDATE article SET title='"+params.title+"',content='"+params.content+"',date_update="+date.getTime()+",id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
+	connection.query("UPDATE article SET title='"+params.title+"',content='"+params.content+"',date_update=NOW(),id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
 		try{
 			res.json({code:200});
 		}catch(e){
@@ -160,8 +160,9 @@ app.post('/updateArticle', function (req,res) {
 app.post('/addArticle', function(req, res) {
 	console.log("addArticle");
 	var params = req.body;
+	console.log(params);
 	var date = new Date();
-	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie) VALUES ("'+params.title+'","'+params.content+'",'+date.getTime()+','+date.getTime()+',"'+params.idCat+'")', function (error, results, fields) {
+	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie) VALUES ("'+params.title+'","'+params.content+'","'+params.preface+'",NOW(),NOW(),"'+params.idCat+'")', function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)

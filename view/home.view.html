@@ -23,8 +23,8 @@
 <div ng-repeat="article in vm.allArticles" class="">
     <h3>{{article.title}}</h3>
     <p>{{article.preface}}</p>
-    Date de création : {{article.date_add}}
-    Date de derniere modification : {{article.date_update}}
+    <i class="date">Date de création : {{article.date_add |date:'medium'}}</i><br>
+	<i class="date">Date de derniere modification : {{article.date_update |date:'medium'}}</i>
 </div>
 
 <nav aria-label="Page navigation example">

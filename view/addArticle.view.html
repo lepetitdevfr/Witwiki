@@ -2,7 +2,7 @@
 
 
 <h1>Ajout d'un article</h1>
-<form name="form" ng-submit="vm.addArticle(title,preface,content)" role="form">
+<form name="form" ng-submit="vm.addArticle(title,preface,content,idCat)" role="form">
 	<div class="form-group">
 		<input ng-model="title" type="text" name="title" value="">
 	</div>
@@ -11,11 +11,7 @@
 	</div>
 
 	<div class="form-group">
-		<select class="btn btn-default" ng-options="cat.id as cat.name for cat in vm.allCat" ng-model="user.id_role" class="" name=""></select>
-	</div>
-
-	<div class="form-group">
-		<text-angular ng-model="content"></text-angular>
+		<select class="btn btn-default" ng-options="cat.id as cat.name for cat in vm.allCat" ng-model="idCat" class="" name=""></select>
 	</div>
 
 	<div class="form-group">
