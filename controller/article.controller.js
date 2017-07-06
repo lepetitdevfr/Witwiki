@@ -25,7 +25,8 @@
         }
 
         vm.sendComment = function() {
-            console.log(vm.comment);
+            var comment = {content:vm.comment,idArticle:vm.article.id,idUser:$rootScope.globals.currentUser.id}
+            console.log(comment);
         }
 
         function loadComment() {
