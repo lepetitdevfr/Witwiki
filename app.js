@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies', 'ngTable', 'textAngular'])
+        .module('app', ['ngRoute', 'ngCookies', 'ngTable', 'textAngular', 'ngFileUpload'])
         .config(config)
         .run(run);
 
@@ -54,6 +54,12 @@
             .when('/article/:id', {
                 controller: 'ArticleController',
                 templateUrl: 'view/article.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/upload', {
+                controller: 'UploadController',
+                templateUrl: 'view/upload.view.html',
                 controllerAs: 'vm'
             })
 

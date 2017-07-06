@@ -3,6 +3,7 @@ var cors 	   = require('cors')
 var app        = express();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
+var multer = require('multer');
 var passwordHash = require('password-hash');
 var cred = require('./bdd');
 var connection = mysql.createConnection(cred);
@@ -294,6 +295,31 @@ app.get('/getMessageOut', function (req, res) {
 			res.json(results);
 		}
 	});
+});
+
+// FILE STORAGE
+// =============================================================================
+
+var storage = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            cb(null, './uploads/')
+        },
+        filename: function (req, file, cb) {
+            var datetimestamp = Date.now();
+            cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
+        }
+    });
+
+var upload = multer({storage: storage}).single('file');
+
+app.post('/upload', function(req, res) {
+    upload(req,res,function(err){
+        if(err){
+             res.json({error_code:1,err_desc:err});
+             return;
+        }
+        res.json({error_code:0,err_desc:null});
+    })
 });
 
 
