@@ -260,10 +260,34 @@ app.get('/getCom', function (req, res) {
 // MESSAGES
 // =============================================================================
 
-app.post('/addMessages', function (req, res) {
-	console.log("addMessages");
+app.post('/addMessage', function (req, res) {
+	console.log("addMessage");
 	var params = req.body;
-	connection.query('INSERT INTO message(title, content, date, id_from, id_to) VALUES ('+params.title+','+params.content+',NOW(),'+params.from+','params.to')', function (error, results, fields) {
+	connection.query('INSERT INTO message(title, content, date, id_from, id_to) VALUES ("'+params.title+'","'+params.content+'",NOW(),'+params.from+','+params.to+')', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+app.get('/getMessageIn', function (req, res) {
+	console.log("getMessageIn");
+	var params = req.query;
+	connection.query('SELECT m.title, m.content, m.date, m.lu, u.pseudo FROM message AS m, user AS u WHERE m.id_from = u.id AND id_to='+params.idUser, function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+app.get('/getMessageOut', function (req, res) {
+	console.log("getMessageOut");
+	var params = req.query;
+	connection.query('SELECT m.title, m.content, m.date, m.lu, u.pseudo FROM message AS m, user AS u WHERE m.id_to = u.id AND id_from='+params.idUser, function (error, results, fields) {
 		if (error) {
 			res.json(error)
 		}else{

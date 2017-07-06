@@ -8,20 +8,27 @@
     MessageService.$inject = ['$http'];
     function MessageService($http) {
         var service = {};
-
+        service.GetMessageIn = GetMessageIn;
+        service.GetMessageOut = GetMessageOut;
+        service.AddMessage = AddMessage;
 
         return service;
 
-        // {cat: "41", tri: "date", page: 10}
-        function GetArticles(param) {
-            return $http.get('http://localhost:8080/getArticles', {params:param}).then(handleSuccess, handleError('Error creating user'));
+        // param.idUser
+        function GetMessageIn(param) {
+            return $http.get('http://localhost:8080/getMessageIn', {params:param}).then(handleSuccess, handleError('Error creating user'));
         }
-        // param.title , param.content, param.idCat, param.id
-        function UpdateArticle(param) {
-            return $http.post('http://localhost:8080/updateArticle',param).then(handleSuccess, handleError('Error creating user'));
+        
+        // param.idUser
+        function GetMessageOut(param) {
+            return $http.get('http://localhost:8080/getMessageOut', {params:param}).then(handleSuccess, handleError('Error creating user'));
         }
+        // param.title , param.content, param.from, param.to
+        function AddMessage(param) {
+            return $http.post('http://localhost:8080/addMessage',param).then(handleSuccess, handleError('Error creating user'));
+        }
+        
         // private functions
-
         function handleSuccess(res) {
             return { success: true, data:res.data}
         }
