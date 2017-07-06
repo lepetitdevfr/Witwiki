@@ -5,8 +5,8 @@
     .module('app')
     .controller('MessageController', MessageController);
 
-    MessageController.$inject = ['$rootScope','$location', 'UserService'];
-    function MessageController($rootScope, $location, UserService) {
+    MessageController.$inject = ['$rootScope','$location', 'UserService', 'MessageService'];
+    function MessageController($rootScope, $location, UserService, MessageService) {
         var vm = this;
 
         initController();
@@ -16,9 +16,11 @@
         }
 
         vm.newMessage = function() {
-            var message = {title:vm.title,content:vm.message,to:vm.dest,from:$rootScope.id};
-            console.log(vm.dest);
+            var message = {title:vm.title,content:vm.message,to:vm.dest,from:$rootScope.globals.currentUser.id};
             console.log(message);
+            MessageService.AddMessage(message)
+            .then(function (content) {
+            });
 
         }
 
