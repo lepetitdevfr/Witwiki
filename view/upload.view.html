@@ -1,6 +1,5 @@
-<h1>Angular Node File Upload</h1>
+<h3>Angular Node File Upload</h3>
 <form name="vm.upload_form">
-  Single Image with validations
   <input type="file" ngf-select ng-model="vm.file" name="file" ngf-pattern="'*'" accept="*" ngf-max-size="20MB"/>
   Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file"/>
   <i ng-show="vm.upload_form.file.$error.required">*required</i><br>
