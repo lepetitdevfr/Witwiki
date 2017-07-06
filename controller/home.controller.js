@@ -21,7 +21,6 @@
 
         function init() {
             loadAllCat();
-            pagination();
 
             vm.tri = "date";
             vm.cat = "";
@@ -38,11 +37,12 @@
             ArticleService.GetArticles(param)
             .then(function (content) {
                 vm.allArticles = content.data;
-                numberArticle = vm.allArticles.nbArticle;
+                numberArticle = vm.allArticles[0].nbArticle;
                 if (numberArticle == 0) {
                     vm.noArticle = true;
                 }else {
                     vm.noArticle = false;
+                    pagination();
                 }
             });
         }
