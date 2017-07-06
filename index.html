@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="dist/css/font-awesome.min.css" />
     <link rel="stylesheet" href="dist/css/ng-table.min.css" />
     <link href="app-content/app.css" rel="stylesheet" />
-
 </head>
 <body>
 
@@ -18,6 +17,7 @@
                 <ul class="nav nav-tabs">
                     <li><a ng-href="./">Accueil</a></li>
                     <li ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
+                    <li ng-if="$root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1"><a ng-href="#!/addArticle">Créer un article</a></li>
                     <li><a ng-if="$root.globals.currentUser" ng-href="#!/login">Déconnexion</a></li>
                 </ul>
                 <div ng-view></div>
