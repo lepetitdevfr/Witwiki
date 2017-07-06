@@ -13,9 +13,22 @@
 
         function initController() {
             loadArticle();
+            // loadComment();
         }
 
         function loadArticle() {
+            var id = {id:$routeParams.id};
+            ArticleService.GetArticleById(id)
+            .then(function (content) {
+                vm.article = content.data;
+            });
+        }
+
+        vm.sendComment = function() {
+            console.log(vm.comment);
+        }
+
+        function loadComment() {
             var id = {id:$routeParams.id};
             ArticleService.GetArticleById(id)
             .then(function (content) {
