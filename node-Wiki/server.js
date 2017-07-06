@@ -288,7 +288,7 @@ app.post('/readMessage', function (req, res) {
 app.get('/getMessageIn', function (req, res) {
 	console.log("getMessageIn");
 	var params = req.query;
-	connection.query('SELECT m.id ,m.title, m.content, m.date, m.lu, u.pseudo FROM message AS m, user AS u WHERE m.id_from = u.id AND id_to='+params.idUser, function (error, results, fields) {
+	connection.query('SELECT m.id ,m.title, m.content, m.date, m.lu, u.pseudo, u.id AS "fromId" FROM message AS m, user AS u WHERE m.id_from = u.id AND id_to='+params.idUser, function (error, results, fields) {
 		if (error) {
 			res.json(error)
 		}else{
