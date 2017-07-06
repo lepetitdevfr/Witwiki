@@ -136,11 +136,16 @@ app.post('/deleteCat', function(req, res) {
 // ARTICLES
 // =============================================================================
 
-app.get('/getAllArticles',function (req,res) {
-	console.log("getAllArticles");
-	connection.query('SELECT * FROM article', function (error, results, fields) {
-		if (error) throw error;
-		res.json(results);
+app.get('/getArticleById',function (req,res) {
+	console.log("getArticleById");
+	var params = req.query;
+	connection.query('SELECT a.id, a.title, a.content, a.preface, a.date_add, a.date_update, c.id AS "catId", c.name AS "nameCat" FROM article AS a,categorie AS c WHERE a.id ='+params.id, function (error, results, fields) {
+		if (error) {
+			console.log(error);
+			res.json(error)
+		}else{
+			res.json(results);
+		}
 	});
 });
 
@@ -157,13 +162,11 @@ app.get('/getArticles',function (req,res) {
 	if (params.tri === "date") {
 		params.tri = 'date_update';
 	}
-	console.log('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "catName" FROM article, categorie WHERE article.id_categorie = categorie.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10');
-	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "catName" FROM article, categorie WHERE article.id_categorie = categorie.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
+	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat" FROM article, categorie WHERE article.id_categorie = categorie.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)
 		}else{
-			console.log(results);
 			res.json(results);
 		}
 	});
