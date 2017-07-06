@@ -21,10 +21,10 @@
         }
         // {cat: "41", tri: "date", page: 10}
         function GetArticles(param) {
-            var config = {
-                params:param
-            }
-            return $http.get('http://localhost:8080/getArticles', config).then(handleSuccess, handleError('Error creating user'));
+            // var config = {
+            //     params:param
+            // }
+            return $http.get('http://localhost:8080/getArticles', {params:param}).then(handleSuccess, handleError('Error creating user'));
         }
         // param.title , param.content, param.idCat, param.id
         function UpdateArticle(param) {

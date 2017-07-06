@@ -16,11 +16,11 @@
             }
 
             var paramReq = {cat:vm.cat,tri:vm.tri,page:vm.pagination.sqlInfo};
+            loadArticles(paramReq);
             console.log(paramReq);
         }
 
         function init() {
-            loadAllArticles();
             loadAllCat();
             pagination();
 
@@ -32,10 +32,11 @@
             paginationObject.sqlInfo = 0;
 
             vm.pagination = paginationObject;
+            loadArticles({cat:vm.cat,tri:vm.tri,page:vm.pagination.sqlInfo});
         }
 
-        function loadAllArticles() {
-            ArticleService.GetAllArticles()
+        function loadArticles(param) {
+            ArticleService.GetArticles(param)
             .then(function (content) {
                 vm.allArticles = content.data;
             });
