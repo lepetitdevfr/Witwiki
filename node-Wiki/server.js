@@ -167,7 +167,7 @@ app.get('/getArticles',function (req,res) {
 		params.tri = "title ASC";
 	}
 
-	console.log('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat", user.pseudo AS "auteur" FROM article, categorie, user WHERE article.id_categorie = categorie.id AND article.id_auteur = user.id AND id_categorie '+cat+' ORDER BY '+params.tri+' LIMIT '+params.page+',10');
+	// console.log('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat", user.pseudo AS "auteur" FROM article, categorie, user WHERE article.id_categorie = categorie.id AND article.id_auteur = user.id AND id_categorie '+cat+' ORDER BY '+params.tri+' LIMIT '+params.page+',10');
 	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "nameCat", user.pseudo AS "auteur" FROM article, categorie, user WHERE article.id_categorie = categorie.id AND article.id_auteur = user.id AND id_categorie '+cat+' ORDER BY '+params.tri+' LIMIT '+params.page+',10', function (error, results, fields) {
 		if (error) {
 			console.log(error);
@@ -228,6 +228,50 @@ app.post('/deleteArticle', function(req, res) {
 		}
 	});
 });
+
+// COMMENTAIRES
+// =============================================================================
+
+
+app.post('/addCom', function(req, res) {
+	console.log("addCom");
+	var params = req.body;
+	connection.query('INSERT INTO comment (date, content, id_article, id_user) VALUES (NOW(),'+params.content+','+params.idArticle+','+params.idUser+')', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+app.get('/getCom', function (req, res) {
+	console.log("addCom");
+	var params = req.query;
+	connection.query('SELECT comment.date, comment.content, user.pseudo FROM comment, user WHERE comment.id_user = user.id AND id_article='+params.idArticle+' ORDER BY date DESC', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+// MESSAGES
+// =============================================================================
+
+app.get('/getMessages', function (req, res) {
+	console.log("addCom");
+	var params = req.query;
+	connection.query('SELECT comment.date, comment.content, user.pseudo FROM comment, user WHERE comment.id_user = user.id AND id_article='+params.idArticle+' ORDER BY date DESC', function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
 
 // START THE SERVER
 // =============================================================================
