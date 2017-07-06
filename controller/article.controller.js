@@ -11,16 +11,18 @@
 
         console.log($routeParams.id);
 
-        // initController();
+        initController();
 
         function initController() {
             loadArticle();
         }
 
         function loadArticle() {
-            ArticleService.GatArticle($routeParams.id)
+            var id = {id:$routeParams.id};
+            ArticleService.GetArticleById(id)
             .then(function (content) {
                 vm.article = content.data;
+                console.log(vm.article);
             });
         }
 

@@ -17,7 +17,6 @@
 
             var paramReq = {cat:vm.cat,tri:vm.tri,page:vm.pagination.sqlInfo};
             loadArticles(paramReq);
-            console.log(paramReq);
         }
 
         function init() {
