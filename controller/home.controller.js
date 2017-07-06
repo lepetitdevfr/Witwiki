@@ -11,13 +11,12 @@
         var numberArticle = 23;
 
         vm.changeReq = function(pagination) {
-            console.log(vm.cat);
-            console.log(vm.tri);
-            
             if (pagination != undefined) {
                 vm.pagination = pagination;
             }
-            console.log(vm.pagination);
+
+            var paramReq = {cat:vm.cat,tri:vm.tri,page:vm.pagination.sqlInfo};
+            console.log(paramReq);
         }
 
         function init() {
@@ -26,11 +25,11 @@
             pagination();
 
             vm.tri = "date";
-            vm.cat = "all";
+            vm.cat = "";
 
             var paginationObject = {};
             paginationObject.page = 1;
-            paginationObject.sqlInfo = 10;
+            paginationObject.sqlInfo = 0;
 
             vm.pagination = paginationObject;
         }
@@ -57,7 +56,7 @@
                 var paginationObject = {};
                 var page = i+1;
                 paginationObject.page = page;
-                paginationObject.sqlInfo = page*10;
+                paginationObject.sqlInfo = i*10;
                 vm.paginationArray.push(paginationObject);
             }
         }

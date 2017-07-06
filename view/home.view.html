@@ -4,7 +4,7 @@
 <form class="form-inline">
     <div class="form-group">
         <label for="tri">Trier par : </label>
-        <select ng-click="vm.changeReq()" class="form-control" id="tri" ng-model="vm.tri">
+        <select ng-change="vm.changeReq()" class="form-control" id="tri" ng-model="vm.tri">
             <option value="date">Défaut (date)</option>
             <option value="title">Titre</option>
             <option value="categorie">Catégorie</option>
@@ -13,8 +13,8 @@
 
     <div class="form-group">
         <label for="cat">Catégorie : </label>
-        <select ng-click="vm.changeReq()" id="cat" class="form-control" ng-model="vm.cat">
-            <option value="all">Défaut (Toute)</option>
+        <select ng-change="vm.changeReq()" id="cat" class="form-control" ng-model="vm.cat">
+            <option value="">Défaut (Toute)</option>
             <option ng-repeat="cat in vm.allCat" value="{{cat.id}}">{{cat.name}}</option>
         </select>
     </div>
@@ -29,6 +29,6 @@
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li ng-repeat="pagination in vm.paginationArray" class="page-item"><a ng-click="vm.changeReq(pagination)" class="page-link" href="#">{{pagination.page}}</a></li>
+    <li ng-repeat="pagination in vm.paginationArray" class="page-item"><a ng-click="vm.changeReq(pagination)" class="page-link" href="javascript:void(0)">{{pagination.page}}</a></li>
   </ul>
 </nav>
