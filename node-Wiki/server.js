@@ -173,9 +173,7 @@ app.get('/getArticles',function (req,res) {
 			console.log(error);
 			res.json(error)
 		}else{
-			// console.log(results);
 			articles = results;
-			console.log(articles);
 		}
 	});
 
@@ -184,7 +182,6 @@ app.get('/getArticles',function (req,res) {
 			console.log(error);
 			res.json(error)
 		}else{
-			console.log(results[0]);
 			var response = {nbArticle:results[0].nbArticle,articles:articles};
 			res.json(response);
 		}

@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 06, 2017 at 01:38 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost:3306
+-- Generation Time: Jul 06, 2017 at 04:30 PM
+-- Server version: 5.6.35
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `witwiki`
@@ -42,40 +36,9 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `title`, `content`, `preface`, `date_add`, `date_update`, `id_categorie`, `id_auteur`) VALUES
-(21, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:55', '2017-07-06 14:11:55', 38, 42),
-(22, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
-(23, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
-(24, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
-(25, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:56', '2017-07-06 14:11:56', 38, 42),
-(26, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
-(27, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
-(28, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
-(29, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
-(30, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:11:59', '2017-07-06 14:11:59', 37, 42),
-(31, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:00', '2017-07-06 14:12:00', 37, 42),
-(32, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:00', '2017-07-06 14:12:00', 37, 42),
-(33, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
-(34, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
-(35, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
-(36, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:02', '2017-07-06 14:12:02', 36, 42),
-(37, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
-(38, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
-(39, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
-(40, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
-(41, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:03', '2017-07-06 14:12:03', 36, 42),
-(42, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
-(43, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
-(44, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
-(45, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
-(46, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
-(47, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:04', '2017-07-06 14:12:04', 36, 42),
-(48, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
-(49, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
-(50, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
-(51, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
-(52, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:05', '2017-07-06 14:12:05', 36, 42),
-(53, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:06', '2017-07-06 14:12:06', 36, 42),
-(54, 'dfs', '<p>fsdfdsfdsfds</p>', 'fsd', '2017-07-06 14:12:06', '2017-07-06 14:12:06', 36, 42);
+(55, 'Ceci est un test', '<p>Article de test<br/></p>', 'Article de test', '2017-07-06 15:51:12', '2017-07-06 15:51:12', 37, 45),
+(56, 'TEst', '<p>test test</p>', 'test', '2017-07-06 15:52:31', '2017-07-06 15:52:31', 37, 45),
+(57, 'test', '<p>test test vélo</p>', 'test', '2017-07-06 15:53:08', '2017-07-06 15:53:08', 38, 45);
 
 -- --------------------------------------------------------
 
@@ -135,6 +98,7 @@ CREATE TABLE `message` (
   `title` varchar(500) NOT NULL,
   `content` varchar(5000) NOT NULL,
   `date` datetime NOT NULL,
+  `lu` tinyint(1) NOT NULL DEFAULT '0',
   `id_from` int(11) DEFAULT NULL,
   `id_to` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -180,8 +144,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `pseudo`, `lastname`, `firstname`, `email`, `password`, `id_role`) VALUES
-(42, 'test', 'test', 'test', 'test', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 2),
-(44, 'test1', 'test', 'test', 'test1', 'sha1$52cca37d$1$f6e20c7d2070fb2b4aaf848a3535713980906521', 2);
+(45, 'Lepetitdev', 'PETIT', 'Jérémy', 'jerem71100@gmail.com', 'sha1$c2770e89$1$9c3fe66cd2fd79046fb4eaa2e0ef165c4675cea6', 1),
+(46, 'Cabri89', 'Cabridens', 'Nicolas', 'Cabridens@gmail.com', 'sha1$24345278$1$9aeef4759c771b6ea49d4a1be89b02dfacb63789', 2);
 
 --
 -- Indexes for dumped tables
@@ -249,7 +213,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT for table `categorie`
 --
@@ -279,7 +243,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- Constraints for dumped tables
 --
@@ -316,7 +280,3 @@ ALTER TABLE `message`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
