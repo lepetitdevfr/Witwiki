@@ -246,7 +246,7 @@ app.post('/addCom', function(req, res) {
 });
 
 app.get('/getCom', function (req, res) {
-	console.log("addCom");
+	console.log("getCom");
 	var params = req.query;
 	connection.query('SELECT comment.date, comment.content, user.pseudo FROM comment, user WHERE comment.id_user = user.id AND id_article='+params.idArticle+' ORDER BY date DESC', function (error, results, fields) {
 		if (error) {
@@ -260,10 +260,10 @@ app.get('/getCom', function (req, res) {
 // MESSAGES
 // =============================================================================
 
-app.get('/getMessages', function (req, res) {
-	console.log("addCom");
-	var params = req.query;
-	connection.query('SELECT comment.date, comment.content, user.pseudo FROM comment, user WHERE comment.id_user = user.id AND id_article='+params.idArticle+' ORDER BY date DESC', function (error, results, fields) {
+app.post('/addMessages', function (req, res) {
+	console.log("addMessages");
+	var params = req.body;
+	connection.query('INSERT INTO message(title, content, date, id_from, id_to) VALUES ('+params.title+','+params.content+',NOW(),'+params.from+','params.to')', function (error, results, fields) {
 		if (error) {
 			res.json(error)
 		}else{
