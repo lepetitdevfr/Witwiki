@@ -144,6 +144,31 @@ app.get('/getAllArticles',function (req,res) {
 	});
 });
 
+app.get('/getArticles',function (req,res) {
+	console.log("getArticles");
+	var params = req.query;
+	var cat;
+	var tri;
+	if (params.cat) {
+		cat = '= '+params.cat;
+	}else{
+		cat = "IS NOT NULL";
+	}
+	if (params.tri === "date") {
+		params.tri = 'date_update';
+	}
+	console.log('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "catName" FROM article, categorie WHERE article.id_categorie = categorie.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10');
+	connection.query('SELECT article.id, article.title, article.preface, article.date_add, article.date_update, categorie.id AS "idCat" ,categorie.name AS "catName" FROM article, categorie WHERE article.id_categorie = categorie.id AND id_categorie '+cat+' ORDER BY '+params.tri+' ASC LIMIT '+params.page+',10', function (error, results, fields) {
+		if (error) {
+			console.log(error);
+			res.json(error)
+		}else{
+			console.log(results);
+			res.json(results);
+		}
+	});
+});
+
 app.post('/updateArticle', function (req,res) {
 	console.log('updateArticle');
 	var params = req.body;
