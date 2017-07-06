@@ -13,7 +13,7 @@
 
         function initController() {
             loadArticle();
-            // loadComment();
+            loadComment();
         }
 
         function loadArticle() {
@@ -25,20 +25,21 @@
         }
 
         vm.sendComment = function() {
-            var comment = {content:vm.comment,idArticle:vm.article.id,idUser:$rootScope.globals.currentUser.id};
-            ArticleService.AddCom(comment)
-            .then(function (response) {
-                console.log(response);
-            });
-
-            console.log(comment);
+            if (vm.comment != undefined) {
+                var comment = {content:vm.comment,idArticle:vm.article.id,idUser:$rootScope.globals.currentUser.id};
+                ArticleService.AddCom(comment)
+                .then(function (response) {
+                    vm.comment = undefined;
+                    loadComment();
+                });
+            }
         }
 
         function loadComment() {
-            var id = {id:$routeParams.id};
-            ArticleService.GetArticleById(id)
+            var id = {idArticle:$routeParams.id};
+            ArticleService.GetCom(id)
             .then(function (content) {
-                vm.article = content.data;
+                vm.comments = content.data;
             });
         }
 

@@ -29,6 +29,16 @@
             }
         }
 
+        vm.editArticle = function () {
+            var params = {title:vm.title,preface:vm.preface,content:vm.content,idCat:vm.idCat,id:$routeParams.id};
+            ArticleService.UpdateArticle(params)
+            .then(function (response) {
+                if (response.success) {
+                    $location.path('/article/'+$routeParams.id);
+                }
+            });
+        }
+
         function loadArticle() {
             var id = {id:$routeParams.id};
             ArticleService.GetArticleById(id)

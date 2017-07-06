@@ -1,16 +1,33 @@
-
 <h1>{{vm.article.title}}</h1>
-<a ng-if="(($root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1)  && $root.globals.currentUser.pseudo == vm.article.auteur) ||$root.globals.currentUser.id_role == 1" class="btn btn-primary" href="#!/editArticle/{{vm.article.id}}">Modifier</a><br>
-<i class="date">Catégorie : {{vm.article.nameCat |date:'medium'}}</i><br>
-<i class="date">Date de création : {{vm.article.date_add |date:'medium'}}</i>
+
+<i class="date">Catégorie : {{vm.article.nameCat |date:'medium'}}</i>
+<i class="date pull-right">Date de création : {{vm.article.date_add |date:'medium'}}</i>
 
 <div ng-bind-html="vm.article.content"></div>
 
 Cette page a été modifiée pour la dernière fois à la date : {{vm.article.date_update |date:'medium'}}.
+<br>
+<a class="btn btn-default btn-xs pull-right" ng-if="(($root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1)  && $root.globals.currentUser.pseudo == vm.article.auteur) ||$root.globals.currentUser.id_role == 1" href="#!/editArticle/{{vm.article.id}}">Modifier</a><br>
+
 <hr>
+
 <div class="form-group">
     <label for="comment">Commentaire</label>
-    <textarea class="form-control" ng-model="vm.comment" id="comment"></textarea>
+    <textarea class="form-control" placeholder="Contenu du commentaire" ng-model="vm.comment" id="comment"></textarea>
 </div>
 
 <button ng-click="vm.sendComment()" name="button" class="btn btn-primary">Envoyer</button>
+
+<hr>
+
+<div class="">
+    <div ng-repeat="comment in vm.comments" class="panel panel-default">
+        <div class="panel-heading">
+            <strong><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{comment.pseudo}}</strong> <span class="text-muted  pull-right"><i class="fa fa-calendar  fa" aria-hidden="true"></i>&nbsp;{{comment.date |date:'medium'}}</span>
+        </div>
+        <div class="panel-body">
+            {{comment.content}}
+        </div>
+    </div>
+
+</div>
