@@ -25,7 +25,12 @@
         }
 
         vm.sendComment = function() {
-            var comment = {content:vm.comment,idArticle:vm.article.id,idUser:$rootScope.globals.currentUser.id}
+            var comment = {content:vm.comment,idArticle:vm.article.id,idUser:$rootScope.globals.currentUser.id};
+            ArticleService.AddCom(comment)
+            .then(function (response) {
+                console.log(response);
+            });
+
             console.log(comment);
         }
 
