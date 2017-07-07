@@ -372,13 +372,14 @@ app.get('/getMedia', function (req, res) {
 // =============================================================================
 
 app.post('/sendMail', function(req, res, next) {
+	console.log('sendMail');
 	var mailOptions = req.body;
 	console.log(mailOptions);
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: 'YourGmailAddress',
-			pass: 'yourPassword'
+			user: 'yourGmailAddress',
+			pass: 'yourPass'
 		}
 	});
 	transporter.sendMail(mailOptions, (error, info) => {
