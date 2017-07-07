@@ -21,13 +21,16 @@
 
 <hr>
 
-<div ng-repeat="article in vm.allArticles" class="panel panel-default">
-    <div class="panel-heading"><a href="#!/article/{{article.id}}">{{article.title}}</a><span class="pull-right"><i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{article.auteur}}&nbsp;<i class="fa fa-calendar  fa" aria-hidden="true"></i> {{article.date_update |date:'medium'}}</span></div>
-    <div class="panel-body">
-        {{article.preface}}
-        <p></p>
-        <a  href="#!/article/{{article.id}}" class="btn btn-default btn-xs pull-right">Afficher le contenu</a>
-    </div>
+<div ng-repeat="article in vm.allArticles" class="list-group">
+    <a href="#!/article/{{article.id}}" class="list-group-item disabled">
+        <span class="">{{article.title}}</span>
+        <br>
+        <span class="">
+            <i class="fa fa-user-o  fa" aria-hidden="true"></i>&nbsp;{{article.auteur}}&nbsp;<i class="fa fa-calendar fa" aria-hidden="true"></i>
+            {{article.date_update |date:'medium'}}
+        </span>
+    </a>
+    <a href="#!/article/{{article.id}}" class="list-group-item">{{article.preface}}</a>
 </div>
 
 <div ng-if="vm.noArticle">

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="dist/css/font-awesome.min.css" />
     <link rel="stylesheet" href="dist/css/ng-table.min.css" />
     <link href="app-content/app.css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -14,13 +16,39 @@
         <div class="container">
             <div class="col-sm-8 col-sm-offset-2">
                 <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-                <ul class="nav nav-tabs">
-                    <li><a ng-href="./">Accueil</a></li>
-                    <li><a ng-href="#!/message">Message</a></li>
-                    <li ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
-                    <li ng-if="$root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1"><a ng-href="#!/addArticle">Créer un article</a></li>
-                    <li><a ng-if="$root.globals.currentUser" ng-href="#!/login">Déconnexion</a></li>
-                </ul>
+                <!-- <ul  ng-if="$root.globals.currentUser" class="nav nav-pills">
+                    <li role="presentation"><a ng-href="./">Accueil</a></li>
+                    <li role="presentation"><a ng-if="$root.globals.currentUser" ng-href="#!/message">Message</a></li>
+                    <li role="presentation" ng-if="$root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1"><a ng-href="#!/addArticle">Créer un article</a></li>
+                    <li role="presentation" ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
+                    <li role="presentation"><a ng-if="$root.globals.currentUser" ng-href="#!/login">Déconnexion</a></li>
+                </ul> -->
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="#" class="navbar-brand">Witwiki</a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                            <ul class="nav navbar-nav">
+                                <li role="presentation"><a ng-if="$root.globals.currentUser" ng-href="#!/message">Messagerie</a></li>
+                                <li role="presentation" ng-if="$root.globals.currentUser.id_role == 2 || $root.globals.currentUser.id_role == 1"><a ng-href="#!/addArticle">Créer un article</a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li role="presentation" ng-if="$root.globals.currentUser.id_role == 1"><a ng-href="#!/admin">Administration</a></li>
+                                <li role="presentation"><a ng-if="$root.globals.currentUser" ng-href="#!/login">Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
                 <div ng-view></div>
             </div>
         </div>
@@ -31,7 +59,6 @@
     <script src="dist/js/angular-route.min.js"></script>
     <script src="dist/js/angular-cookies.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
-    <script src="dist/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <!-- Libs -->
     <script src='dist/js/textAngular-rangy.min.js'></script>
     <script src='dist/js/textAngular-sanitize.min.js'></script>
