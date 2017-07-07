@@ -2,4 +2,6 @@
 /node-Wiki/node_modules
 /node-Wiki/bdd.js
 /node-Wiki/gmail.js
-/uploads/*
+/uploads/*.jpg
+/uploads/*.gif
+/uploads/*.png
