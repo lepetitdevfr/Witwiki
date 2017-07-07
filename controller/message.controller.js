@@ -35,7 +35,6 @@
             UserService.GetAllUsers()
             .then(function (content) {
                 vm.dests =content.data;
-                console.log(content.data)
             });
         }
 
@@ -48,7 +47,7 @@
 
         vm.reply = function(message) {
             vm.title = message.title;
-            vm.dest = message.fromId;
+            // vm.dest = message.fromId;
         }
 
         vm.new = function() {
@@ -92,7 +91,7 @@
         };
         UserService.SendMail(data)
         .then(function (content) {
-            
+
         });
     }
 }
