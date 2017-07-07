@@ -7,6 +7,7 @@ var multer = require('multer');
 var passwordHash = require('password-hash');
 var cred = require('./bdd');
 var gmailCred = require('./gmail');
+var htmlEncode = require('js-htmlencode');
 var nodemailer = require('nodemailer');
 var connection = mysql.createConnection(cred);
 
@@ -194,8 +195,11 @@ app.get('/getArticles',function (req,res) {
 app.post('/updateArticle', function (req,res) {
 	console.log('updateArticle');
 	var params = req.body;
+	console.log(params.content);
+
 	var date = new Date();
-	connection.query("UPDATE article SET title='"+params.title+"',preface='"+params.preface+"',content='"+params.content+"',date_update=NOW(),id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
+	connection.query("UPDATE article SET title='"+params.title+"',preface='"+params.preface+"',content='"+htmlEncode(params.content)+"',date_update=NOW(),id_categorie='"+params.idCat+"' WHERE id="+params.id, function (error, results, fields) {
+			console.log(error);
 		try{
 			res.json({code:200});
 		}catch(e){
@@ -207,9 +211,8 @@ app.post('/updateArticle', function (req,res) {
 app.post('/addArticle', function(req, res) {
 	console.log("addArticle");
 	var params = req.body;
-	console.log(params);
 	var date = new Date();
-	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie, id_auteur) VALUES ("'+params.title+'","'+params.content+'","'+params.preface+'",NOW(),NOW(),"'+params.idCat+'","'+params.idAuteur+'")', function (error, results, fields) {
+	connection.query('INSERT INTO article (title, content, preface, date_add, date_update, id_categorie, id_auteur) VALUES ("'+params.title+'","'+htmlEncode(params.content)+'","'+params.preface+'",NOW(),NOW(),"'+params.idCat+'","'+params.idAuteur+'")', function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)

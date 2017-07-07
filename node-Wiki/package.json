@@ -14,6 +14,7 @@
     "cors": "^2.8.3",
     "express": "^4.15.3",
     "fs": "0.0.1-security",
+    "js-htmlencode": "^0.3.0",
     "multer": "^1.3.0",
     "mysql": "^2.13.0",
     "node-sql": "^1.1.5",

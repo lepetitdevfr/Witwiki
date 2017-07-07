@@ -8,6 +8,7 @@
     ArticleController.$inject = ['ArticleService', '$rootScope', '$routeParams', 'UserService'];
     function ArticleController(ArticleService, $rootScope, $routeParams, UserService) {
         var vm = this;
+        var parser = new DOMParser;
 
         initController();
 
@@ -21,6 +22,8 @@
             ArticleService.GetArticleById(id)
             .then(function (content) {
                 vm.article = content.data;
+                var dom = parser.parseFromString('<!doctype html><body>' + vm.article.content,'text/html');
+                vm.article.content = dom.body.textContent;
             });
         }
 

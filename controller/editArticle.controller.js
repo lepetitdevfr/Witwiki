@@ -8,7 +8,7 @@
     EditArticleController.$inject = ['ArticleService', '$rootScope', 'textAngularManager', 'CatService', '$routeParams','$location'];
     function EditArticleController(ArticleService, $rootScope, textAngularManager, CatService, $routeParams,$location) {
         var vm = this;
-
+        var parser = new DOMParser;
         initController();
 
         function initController() {
@@ -45,7 +45,8 @@
             ArticleService.GetArticleById(id)
             .then(function (content) {
                 vm.article = content.data;
-                vm.content = vm.article.content;
+                var dom = parser.parseFromString('<!doctype html><body>' + vm.article.content,'text/html');
+                vm.content = dom.body.textContent;
                 vm.title = vm.article.title;
                 vm.preface = vm.article.preface;
                 vm.idCat = vm.article.catId;
