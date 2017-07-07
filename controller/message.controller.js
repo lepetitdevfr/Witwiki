@@ -35,6 +35,13 @@
             });
         }
 
+        function loadMedia() {
+            UserService.GetAllUsers()
+            .then(function (content) {
+                vm.medias =content.data;
+            });
+        }
+
         vm.reply = function(message) {
             vm.title = message.title;
             vm.dest = message.fromId;
