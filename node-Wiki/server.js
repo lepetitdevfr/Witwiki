@@ -6,6 +6,7 @@ var mysql      = require('mysql');
 var multer = require('multer');
 var passwordHash = require('password-hash');
 var cred = require('./bdd');
+var gmailCred = require('./gmail');
 var nodemailer = require('nodemailer');
 var connection = mysql.createConnection(cred);
 
@@ -377,10 +378,7 @@ app.post('/sendMail', function(req, res, next) {
 	console.log(mailOptions);
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
-		auth: {
-			user: 'yourGmailAddress',
-			pass: 'yourPass'
-		}
+		auth: gmailCred
 	});
 	transporter.sendMail(mailOptions, (error, info) => {
 		if (error) {
