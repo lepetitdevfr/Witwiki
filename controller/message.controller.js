@@ -19,10 +19,13 @@
 
         vm.newMessage = function() {
             if (vm.title != undefined && vm.message != undefined && vm.dest != undefined && vm.title != "" && vm.message != "" && vm.dest != "") {
-                var message = {title:vm.title,content:vm.message,to:vm.dest,from:$rootScope.globals.currentUser.id};
+                console.log(vm);
+                var message = {title:vm.title,content:vm.message,to:vm.dest.id,from:$rootScope.globals.currentUser.id};
                 MessageService.AddMessage(message)
                 .then(function (content) {
                     loadOutMessage();
+                    console.log();
+                    mailNotification(vm.dest.email)
                     vm.new();
                 });
             }
@@ -32,6 +35,7 @@
             UserService.GetAllUsers()
             .then(function (content) {
                 vm.dests =content.data;
+                console.log(content.data)
             });
         }
 
@@ -69,6 +73,21 @@
                 vm.messagesOut = content.data;
             });
         }
+
+        function mailNotification(email){
+          var message = "Vous avez reçu un nouveau message de la part de "+ $rootScope.globals.currentUser.pseudo;
+          var data = {
+            from: '"Witwiki Notification 👻" <jerem71100@gmail.com>',
+            to: email,
+            subject: "Nouveau Message",
+            text: message,
+            html: '<b>'+message+'</b>'
+        };
+        UserService.SendMail(data)
+        .then(function (content) {
+            
+        });
     }
+}
 
 })();
