@@ -41,14 +41,15 @@
         }
 
         function mailNotification(user){
-            var message = "Notification d'enregistrement sur le site Witwiki avec le pseudo :"+ user.pseudo;
+            var message = "Notification d\'enregistrement sur le site Witwiki avec le pseudo :"+ user.pseudo;
             var data = {
                 from: '"Witwiki Notification 👻" <jerem71100@gmail.com>',
-                to: user.mail,
-                subject: "Witwiki - Notification d'inscription",
+                to: user.email,
+                subject: "Witwiki - Notification d\'inscription",
                 text: message,
                 html: '<b>'+message+'</b>'
             };
+            console.log(data);
             UserService.SendMail(data)
             .then(function (content) {
 

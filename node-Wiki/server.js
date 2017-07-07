@@ -142,7 +142,7 @@ app.post('/deleteCat', function(req, res) {
 app.get('/getArticleById',function (req,res) {
 	console.log("getArticleById");
 	var params = req.query;
-	connection.query('SELECT DISTINCT a.id, a.title, a.content, a.preface, a.date_add, a.date_update, c.id AS "catId", c.name AS "nameCat", u.pseudo AS "auteur" FROM article AS a,categorie AS c, user AS u WHERE a.id_categorie = c.id AND a.id_auteur=u.id AND a.id ='+params.id, function (error, results, fields) {
+	connection.query('SELECT DISTINCT a.id, a.title, a.content, a.preface, a.date_add, a.date_update, c.id AS "catId", c.name AS "nameCat", u.pseudo AS "auteur", u.email AS "emailAuteur" FROM article AS a,categorie AS c, user AS u WHERE a.id_categorie = c.id AND a.id_auteur=u.id AND a.id ='+params.id, function (error, results, fields) {
 		if (error) {
 			console.log(error);
 			res.json(error)

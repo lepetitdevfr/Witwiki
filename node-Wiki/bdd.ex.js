@@ -1,6 +1,6 @@
 module.exports = {
-    host     : 'localhost',
-    user     : 'root',
-    password : '',
-    database : 'witwiki'
-};
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'witwiki'
+}
