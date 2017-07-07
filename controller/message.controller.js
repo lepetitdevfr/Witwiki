@@ -79,7 +79,7 @@
           var data = {
             from: '"Witwiki Notification 👻" <jerem71100@gmail.com>',
             to: email,
-            subject: "Nouveau Message",
+            subject: "Witwiki - Nouveau Message",
             text: message,
             html: '<b>'+message+'</b>'
         };

@@ -21,6 +21,7 @@
                             vm.dataLoading = false;
                         }else{
                             FlashService.Success('Registration successful', true);
+                            mailNotification(vm.user);
                             $location.path('/login');
                         }
                     } else {
@@ -38,6 +39,21 @@
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
-    }
+
+        function mailNotification(user){
+            var message = "Notification d'enregistrement sur le site Witwiki avec le pseudo :"+ user.pseudo;
+            var data = {
+                from: '"Witwiki Notification 👻" <jerem71100@gmail.com>',
+                to: user.mail,
+                subject: "Witwiki - Notification d'inscription",
+                text: message,
+                html: '<b>'+message+'</b>'
+            };
+            UserService.SendMail(data)
+            .then(function (content) {
+
+            });
+        }
+}
 
 })();
