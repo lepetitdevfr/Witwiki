@@ -11,6 +11,7 @@
         service.GetMessageIn = GetMessageIn;
         service.GetMessageOut = GetMessageOut;
         service.AddMessage = AddMessage;
+        service.ReadMessage = ReadMessage;
 
         return service;
 
@@ -18,7 +19,7 @@
         function GetMessageIn(param) {
             return $http.get('http://localhost:8080/getMessageIn', {params:param}).then(handleSuccess, handleError('Error creating user'));
         }
-        
+
         // param.idUser
         function GetMessageOut(param) {
             return $http.get('http://localhost:8080/getMessageOut', {params:param}).then(handleSuccess, handleError('Error creating user'));
@@ -31,7 +32,7 @@
         function ReadMessage(param){
             return $http.post('http://localhost:8080/readMessage',param).then(handleSuccess, handleError('Error creating user'));
         }
-        
+
         // private functions
         function handleSuccess(res) {
             return { success: true, data:res.data}
