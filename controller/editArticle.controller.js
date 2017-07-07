@@ -31,6 +31,7 @@
 
         vm.editArticle = function () {
             var params = {title:vm.title,preface:vm.preface,content:vm.content,idCat:vm.idCat,id:$routeParams.id};
+            console.log(params);
             ArticleService.UpdateArticle(params)
             .then(function (response) {
                 if (response.success) {
