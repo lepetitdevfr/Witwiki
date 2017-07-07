@@ -5,9 +5,16 @@
     .module('app')
     .controller('UploadController', UploadController);
 
-    UploadController.$inject = ['$rootScope', '$routeParams', 'Upload'];
-    function UploadController($rootScope, $routeParams, Upload) {
+    UploadController.$inject = ['$rootScope', '$routeParams', 'Upload', 'CatService', 'UploadService'];
+    function UploadController($rootScope, $routeParams, Upload, CatService, UploadService) {
         var vm = this;
+
+
+        initController();
+
+        function initController() {
+            loadAllCat();
+        }
 
         vm.submit = function(){ //function to call on form submit
             if (vm.upload_form.file.$valid && vm.file) { //check if from is valid
@@ -21,9 +28,14 @@
             }).then(function (resp) { //upload function returns a promise
                 console.log(resp);
                 if(resp.data.error_code === 0){ //validate success
-                    $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                    console.log('Success ' + resp.config.data.file.name + ' uploaded.');
+                    var param = {idCat:vm.idCat,com:vm.commentaire,url:"http://localhost:8888/witwiki/uploads/"+resp.data.file.filename}
+                    UploadService.AddMedia(param)
+                    .then(function (content) {
+                        vm.allCat = content.data;
+                    });
                 } else {
-                    $window.alert('an error occured');
+                    console.log('an error occured');
                 }
             }, function (resp) { //catch error
                 console.log('Error status: ' + resp.status);
@@ -36,7 +48,16 @@
             });
         };
 
+        function loadAllCat() {
+            CatService.GetAllCat()
+            .then(function (content) {
+                vm.allCat = content.data;
+            });
+        }
+
 
     }
 
 })();
+
+// http://localhost:8888/witwiki/uploads/

@@ -6,6 +6,7 @@ var mysql      = require('mysql');
 var multer = require('multer');
 var passwordHash = require('password-hash');
 var cred = require('./bdd');
+var nodemailer = require('nodemailer');
 var connection = mysql.createConnection(cred);
 
 // configure app to use bodyParser()
@@ -314,7 +315,7 @@ app.get('/getMessageOut', function (req, res) {
 
 var storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
-            cb(null, './uploads/')
+            cb(null, '../uploads/')
         },
         filename: function (req, file, cb) {
             var datetimestamp = Date.now();
@@ -333,6 +334,63 @@ app.post('/upload', function(req, res) {
         res.json({error_code:0,err_desc:null,file:req.file});
     })
 });
+
+
+app.post('/addMedia', function(req, res) {
+	console.log("addMedia");
+	var params = req.body;
+	console.log(params);
+	connection.query('INSERT INTO media(url, commentaire, id_categorie) VALUES ("'+params.url+'","'+params.com+'",'+params.idCat+')', function (error, results, fields) {
+		if (error) {
+			console.log(error);
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+app.get('/getMedia', function (req, res) {
+	console.log("getMedia");
+	var params = req.query;
+	if (!params.idCat) {
+		params.idCat = "IS NOT NULL";
+	}
+	connection.query('SELECT m.id, m.url, m.commentaire, m.id_categorie, c.name AS "categorie" FROM media AS m, categorie AS c WHERE m.id_categorie = c.id AND id_categorie ='+params.idCat, function (error, results, fields) {
+		if (error) {
+			res.json(error)
+		}else{
+			res.json(results);
+		}
+	});
+});
+
+
+// SEND MAIL
+// =============================================================================
+
+app.post('/sendMail', function(req, res, next) {
+	var mailOptions = req.body;
+	console.log(mailOptions);
+	var transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: 'YourGmailAddress',
+			pass: 'yourPassword'
+		}
+	});
+	transporter.sendMail(mailOptions, (error, info) => {
+		if (error) {
+			return console.log(error);
+			res.json({code:500,data:error});
+
+		}
+		console.log('Message %s sent: %s', info.messageId, info.response);
+		res.json({code:200,data:info});
+	});
+
+});
+
 
 
 // START THE SERVER

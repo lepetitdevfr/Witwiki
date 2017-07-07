@@ -13,6 +13,7 @@
         service.GetAllRoles = GetAllRoles;
         service.CreateUser = CreateUser;
         service.UpdateRole = UpdateRole;
+        service.SendMail = SendMail;
 
         return service;
         // param.pseudo, param.lastname, param.firstname, param.email, param.password
@@ -30,6 +31,10 @@
         // param.role, param.pseudo
         function UpdateRole(param) {
             return $http.post('http://localhost:8080/updateRole',param).then(handleSuccess, handleError('Error updating user role'))
+        }
+        // param.role, param.pseudo
+        function SendMail(param) {
+            return $http.post('http://localhost:8080/sendMail',param).then(handleSuccess, handleError('Error updating user role'))
         }
 
         // private functions
