@@ -8,12 +8,11 @@
     UploadController.$inject = ['$rootScope', '$routeParams', 'Upload', 'CatService', 'UploadService'];
     function UploadController($rootScope, $routeParams, Upload, CatService, UploadService) {
         var vm = this;
-
-        initController();
+        vm.mediaParam = {};
 
         function initController() {
             loadAllCat();
-            loadAllMedia();
+            vm.loadAllMedia();
         }
 
         vm.submit = function(){ //function to call on form submit
@@ -57,15 +56,15 @@
             });
         }
 
-        function loadAllMedia() {
-            var mediaParam = {}
-            UploadService.GetMedia(mediaParam)
+        vm.loadAllMedia = function () {
+            vm.mediaParam = {idCat:vm.idUploadCat}
+            UploadService.GetMedia(vm.mediaParam)
             .then(function (content) {
                 vm.medias = content.data;
-                console.log(vm.medias);
             });
         }
 
+        initController();
 
     }
 
