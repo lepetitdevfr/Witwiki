@@ -13,7 +13,7 @@
         <form name="vm.upload_form">
             <div class="form-group">
                 <input type="file" ngf-select ng-model="vm.file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB"/>
-                <img style="width:100px;" ngf-thumbnail="vm.file"/>
+                <img style="width:100px;" ng-show="vm.file" ngf-thumbnail="vm.file"/>
                 <i ng-show="vm.upload_form.file.$error.required">*required</i></br>
                 <i ng-show="vm.upload_form.file.$error.maxSize">Fichier trop volumineux {{up.file.size / 1000000|number:1}}MB: max 20M</i>
             </div>

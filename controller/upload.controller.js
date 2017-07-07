@@ -32,7 +32,11 @@
                     var param = {idCat:vm.idCat,com:vm.commentaire,url:"./uploads/"+resp.data.file.filename}
                     UploadService.AddMedia(param)
                     .then(function (content) {
-                        vm.allCat = content.data;
+                        // vm.allCat = content.data;
+                        vm.loadAllMedia();
+                        vm.commentaire = "";
+                        vm.idCat = "";
+                        vm.file = "";
                     });
                 } else {
                     console.log('an error occured');
@@ -65,9 +69,5 @@
         }
 
         initController();
-
     }
-
 })();
-
-// http://localhost:8888/witwiki/uploads/

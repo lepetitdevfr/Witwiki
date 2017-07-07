@@ -359,7 +359,7 @@ app.get('/getMedia', function (req, res) {
 	}else{
 		params.idCat = "= "+params.idCat;
 	}
-	connection.query('SELECT m.id, m.url, m.commentaire, m.id_categorie, c.name AS "categorie" FROM media AS m, categorie AS c WHERE m.id_categorie = c.id AND id_categorie '+params.idCat, function (error, results, fields) {
+	connection.query('SELECT m.id, m.url, m.commentaire, m.id_categorie, c.name AS "categorie" FROM media AS m, categorie AS c WHERE m.id_categorie = c.id AND id_categorie '+params.idCat+' ORDER BY m.id DESC', function (error, results, fields) {
 		if (error) {
 			res.json(error)
 		}else{
